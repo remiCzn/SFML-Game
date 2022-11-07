@@ -1,0 +1,24 @@
+#include "PhysicsComponent.h"
+
+PhysicsComponent::PhysicsComponent() {
+    this->position = sf::Vector2f(0, 0);
+    this->velocity = sf::Vector2f(0, 0);
+}
+
+void PhysicsComponent::update(float dt) {
+    this->position += this->velocity * dt;
+    this->velocity = sf::Vector2f(0, 0);
+    std::cout << this->position.x << std::endl;
+}
+
+void PhysicsComponent::setVelocityX(float x) {
+    this->velocity.x = x;
+}
+
+void PhysicsComponent::setVelocityY(float y) {
+    this->velocity.y = y;
+}
+
+const sf::Vector2f &PhysicsComponent::getPosition() {
+    return this->position;
+}
