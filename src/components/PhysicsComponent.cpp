@@ -8,7 +8,6 @@ PhysicsComponent::PhysicsComponent() {
 void PhysicsComponent::update(float dt) {
     this->position += this->velocity * dt;
     this->velocity = sf::Vector2f(0, 0);
-    std::cout << this->position.x << std::endl;
 }
 
 void PhysicsComponent::setVelocityX(float x) {

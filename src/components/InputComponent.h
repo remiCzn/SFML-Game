@@ -7,6 +7,8 @@ class InputComponent {
 public:
     virtual ~InputComponent() = default;
 
+    virtual void update() = 0;
+
     virtual void handleInput(sf::Keyboard::Key &keycode) = 0;
 };
 

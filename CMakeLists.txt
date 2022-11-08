@@ -15,7 +15,7 @@ add_executable(${GAME_NAME}
         src/gameobject/GameObject.cpp
         src/gameobject/GameObject.h
         src/components/GraphicsComponent.cpp
-        src/Log.h src/components/InputComponent.h src/components/player/PlayerInputComponent.cpp src/components/player/PlayerInputComponent.h src/components/PhysicsComponent.h src/components/PhysicsComponent.cpp)
+        src/components/InputComponent.h src/components/player/PlayerInputComponent.cpp src/components/player/PlayerInputComponent.h src/components/PhysicsComponent.h src/components/PhysicsComponent.cpp src/components/player/PlayerAnimationComponent.cpp src/components/player/PlayerAnimationComponent.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR ${CMAKE_SOURCE_DIR}/lib/SFML/lib/cmake/SFML)

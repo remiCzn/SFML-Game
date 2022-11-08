@@ -10,8 +10,11 @@ public:
 
     void handleInput(sf::Keyboard::Key &keycode) override;
 
+    void update() override;
+
 private:
     std::shared_ptr<PhysicsComponent> _physics;
+    float speed_force;
 };
 
 

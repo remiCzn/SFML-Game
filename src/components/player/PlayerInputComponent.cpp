@@ -3,28 +3,28 @@
 #include <utility>
 
 PlayerInputComponent::PlayerInputComponent(std::shared_ptr<PhysicsComponent> physics) {
-    this->_physics = physics;
+    this->_physics = std::move(physics);
+    this->speed_force = 400.f;
 }
 
 void PlayerInputComponent::handleInput(sf::Keyboard::Key &keycode) {
     switch (keycode) {
-        case sf::Keyboard::Q:
-            std::cout << "Left" << std::endl;
-            this->_physics->setVelocityX(-400);
-            break;
-        case sf::Keyboard::D:
-            std::cout << "Right" << std::endl;
-            this->_physics->setVelocityX(400);
-            break;
-        case sf::Keyboard::Z:
-            std::cout << "Up" << std::endl;
-            this->_physics->setVelocityY(-400);
-            break;
-        case sf::Keyboard::S:
-            std::cout << "Down" << std::endl;
-            this->_physics->setVelocityY(400);
-            break;
         default:
             break;
+    }
+}
+
+void PlayerInputComponent::update() {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+        this->_physics->setVelocityX(-this->speed_force);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        this->_physics->setVelocityX(this->speed_force);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+        this->_physics->setVelocityY(this->speed_force);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+        this->_physics->setVelocityY(-this->speed_force);
     }
 }

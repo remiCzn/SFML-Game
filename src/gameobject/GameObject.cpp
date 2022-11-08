@@ -4,6 +4,10 @@ void GameObject::add_graphics_component(std::string asset_path, sf::IntRect text
     this->_graphics.reset(new GraphicsComponent(asset_path, texture_rect, this->_physics));
 }
 
+void GameObject::add_graphics_component(GraphicsComponent *graphicsComponent) {
+    this->_graphics.reset(graphicsComponent);
+}
+
 void GameObject::add_input_component(InputComponent *inputComponent) {
     this->_input.reset(inputComponent);
 }
@@ -13,6 +17,9 @@ void GameObject::add_physics_component(PhysicsComponent *physicsComponent) {
 }
 
 void GameObject::update(const float &dt) {
+    if (this->_input) {
+        this->_input->update();
+    }
     if (this->_physics) {
         this->_physics->update(dt);
     }

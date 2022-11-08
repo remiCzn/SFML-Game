@@ -40,9 +40,6 @@ void Game::handeEvent() {
                 continue;
             case sf::Event::KeyPressed:
                 this->player.handleInput(e.key.code);
-            case sf::Event::JoystickButtonPressed:
-                std::cout << e.joystickButton.button << e.joystickButton.joystickId << std::endl;
-
             default:
                 continue;
         }
