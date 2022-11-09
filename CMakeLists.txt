@@ -15,7 +15,7 @@ add_executable(${GAME_NAME}
         src/gameobject/GameObject.cpp
         src/gameobject/GameObject.h
         src/components/GraphicsComponent.cpp
-        src/components/InputComponent.h src/components/player/PlayerInputComponent.cpp src/components/player/PlayerInputComponent.h src/components/PhysicsComponent.h src/components/PhysicsComponent.cpp src/components/player/PlayerAnimationComponent.cpp src/components/player/PlayerAnimationComponent.h)
+        src/components/InputComponent.h src/components/player/PlayerInputComponent.cpp src/components/player/PlayerInputComponent.h src/components/PhysicsComponent.h src/components/PhysicsComponent.cpp src/components/player/PlayerAnimationComponent.cpp src/components/player/PlayerAnimationComponent.h src/gameobject/Tilemap.cpp src/gameobject/Tilemap.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR ${CMAKE_SOURCE_DIR}/lib/SFML/lib/cmake/SFML)
@@ -25,5 +25,6 @@ include_directories(${CMAKE_SOURCE_DIR}/lib/SFML/include)
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 configure_file(assets/character/chara1.png assets/character/chara1.png COPYONLY)
+configure_file(assets/tilesheet/main_sheet.png assets/tilesheet/main_sheet.png COPYONLY)
 
 target_link_libraries(${GAME_NAME} sfml-system sfml-window sfml-graphics)

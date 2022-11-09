@@ -2,11 +2,13 @@
 #define GAME_GAME_H
 
 #include "gameobject/Player.h"
+#include "gameobject/Tilemap.h"
 
 class Game {
 private:
     std::shared_ptr<sf::RenderWindow> window;
     Player player;
+    Tilemap tilemap;
 
     float dt;
     sf::Clock dtClock;

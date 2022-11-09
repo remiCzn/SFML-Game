@@ -14,6 +14,7 @@ void Game::update() {
 
 void Game::render() {
     this->window->clear(sf::Color::Black);
+    tilemap.render(this->window);
     player.render(this->window);
     this->window->display();
 
