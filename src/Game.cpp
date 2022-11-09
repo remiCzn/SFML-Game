@@ -2,9 +2,12 @@
 
 #include <memory>
 
-Game::Game() : view(*new sf::View({0, 0}, {800, 600})) {
+Game::Game() {
     this->dt = 0.f;
     this->window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Window Example");
+    this->view = std::make_shared<sf::View>();
+    this->view->setCenter(0, 0);
+    this->view->setSize(800, 600);
 }
 
 void Game::update() {
@@ -14,7 +17,8 @@ void Game::update() {
 
 void Game::render() {
     this->window->clear(sf::Color::Black);
-    this->window->setView(this->view);
+    this->window->setView(*this->view);
+    this->view->setCenter(this->player.getPlayerCenterPosition());
     tilemap.render(this->window);
     player.render(this->window);
     this->window->display();

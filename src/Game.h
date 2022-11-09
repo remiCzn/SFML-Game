@@ -9,7 +9,7 @@ private:
     std::shared_ptr<sf::RenderWindow> window;
     Player player;
     Tilemap tilemap;
-    sf::View &view;
+    std::shared_ptr<sf::View> view;
 
     float dt;
     sf::Clock dtClock;

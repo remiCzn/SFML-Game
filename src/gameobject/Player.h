@@ -7,11 +7,9 @@
 
 class Player : public GameObject {
 public:
-    Player() : GameObject() {
-        this->add_physics_component(new PhysicsComponent());
-        this->add_graphics_component(new PlayerAnimationComponent(this->_physics));
-        this->add_input_component(new PlayerInputComponent(this->_physics));
-    }
+    Player();
+
+    sf::Vector2f getPlayerCenterPosition();
 };
 
 

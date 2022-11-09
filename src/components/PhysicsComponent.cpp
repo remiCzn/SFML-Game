@@ -3,6 +3,7 @@
 PhysicsComponent::PhysicsComponent() {
     this->position = sf::Vector2f(0, 0);
     this->velocity = sf::Vector2f(0, 0);
+    this->box = sf::FloatRect(0, 0, 19, 27);
 }
 
 void PhysicsComponent::update(float dt) {
