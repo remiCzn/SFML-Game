@@ -1,7 +1,6 @@
 #ifndef GAME_TILEMAP_H
 #define GAME_TILEMAP_H
 
-
 #include "defines.h"
 
 const int TILEMAP_SIZE = 16;

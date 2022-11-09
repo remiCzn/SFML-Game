@@ -1,4 +1,5 @@
 #include "Tilemap.h"
+#include <json/json.h>
 
 void Tilemap::render(const std::shared_ptr<sf::RenderTarget> &target) {
     target->draw(vertices, &texture);
@@ -10,6 +11,13 @@ Tilemap::Tilemap() {
     }
     this->vertices.setPrimitiveType(sf::Quads);
     this->vertices.resize(TILEMAP_SIZE * TILEMAP_SIZE * 4);
+
+    std::ifstream f("assets/tilesheet/main_sheet.tsj");
+    Json::Value tilesheet;
+    f >> tilesheet;
+
+    std::cout << tilesheet["image"] << std::endl;
+
     addTile(0, 0, 51);
     addTile(0, 1, 56);
 }
@@ -17,8 +25,8 @@ Tilemap::Tilemap() {
 void Tilemap::addTile(const int &x, const int &y, const int &tile_idx) {
     float tileSize = 16;
     float realTileSize = 80;
-    float tile_x = (tile_idx % 50) + 1; // 1 = margin / tileheight
-    float tile_y = (tile_idx / 50) + 1;
+    float tile_x = tile_idx % 50 + 1; // 1 = margin / tileheight
+    float tile_y = tile_idx / 50 + 1;
     sf::Vertex *quad = &this->vertices[(x + y * TILEMAP_SIZE) * 4];
 
     quad[0].position = sf::Vector2f(x * realTileSize, y * realTileSize);
