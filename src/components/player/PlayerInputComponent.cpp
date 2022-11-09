@@ -8,10 +8,10 @@ PlayerInputComponent::PlayerInputComponent(std::shared_ptr<PhysicsComponent> phy
 }
 
 void PlayerInputComponent::handleInput(sf::Keyboard::Key &keycode) {
-    switch (keycode) {
-        default:
-            break;
-    }
+//    switch (keycode) {
+//        default:
+//            break;
+//    }
 }
 
 void PlayerInputComponent::update() {
