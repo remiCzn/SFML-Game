@@ -21,3 +21,7 @@ void PhysicsComponent::setVelocityY(float y) {
 const sf::Vector2f &PhysicsComponent::getPosition() {
     return this->position;
 }
+
+const sf::Vector2f &PhysicsComponent::getVelocity() {
+    return this->velocity;
+}

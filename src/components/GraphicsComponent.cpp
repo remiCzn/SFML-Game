@@ -19,7 +19,7 @@ void GraphicsComponent::render(const std::shared_ptr<sf::RenderTarget> &target) 
     target->draw(this->sprite);
 }
 
-void GraphicsComponent::update() {
+void GraphicsComponent::update(const float &dt) {
     this->sprite.setPosition(this->_physics->getPosition());
 }
 

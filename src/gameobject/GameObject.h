@@ -8,8 +8,6 @@ class GameObject {
 public:
     GameObject() = default;
 
-    void add_graphics_component(std::string asset_path, sf::IntRect texture_rect);
-
     void add_graphics_component(GraphicsComponent *graphicsComponent);
 
     void add_input_component(InputComponent *inputComponent);

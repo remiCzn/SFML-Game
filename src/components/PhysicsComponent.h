@@ -19,6 +19,8 @@ public:
 
     const sf::Vector2f &getPosition();
 
+    const sf::Vector2f &getVelocity();
+
 };
 
 #endif //GAME_PHYSICSCOMPONENT_H

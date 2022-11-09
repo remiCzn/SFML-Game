@@ -10,11 +10,11 @@ public:
 
     virtual ~GraphicsComponent() = default;
 
-    virtual void update();
+    virtual void update(const float &dt);
 
     virtual void render(const std::shared_ptr<sf::RenderTarget> &target);
 
-private:
+protected:
     sf::Sprite sprite;
     sf::IntRect texture_rect;
     sf::Texture texture;
