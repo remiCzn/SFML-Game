@@ -2,7 +2,7 @@
 
 #include <memory>
 
-Game::Game() {
+Game::Game() : view(*new sf::View({0, 0}, {800, 600})) {
     this->dt = 0.f;
     this->window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Window Example");
 }
@@ -14,6 +14,7 @@ void Game::update() {
 
 void Game::render() {
     this->window->clear(sf::Color::Black);
+    this->window->setView(this->view);
     tilemap.render(this->window);
     player.render(this->window);
     this->window->display();

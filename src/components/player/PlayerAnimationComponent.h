@@ -24,6 +24,8 @@ public:
 
     void setDirection(const Direction &direction);
 
+    void render(const std::shared_ptr<sf::RenderTarget> &target) override;
+
 private:
     void updateDirection();
 

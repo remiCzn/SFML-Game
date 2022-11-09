@@ -41,4 +41,8 @@ void PlayerAnimationComponent::setDirection(const Direction &new_dir) {
     }
 }
 
+void PlayerAnimationComponent::render(const std::shared_ptr<sf::RenderTarget> &target) {
+    GraphicsComponent::render(target);
+}
+
 
