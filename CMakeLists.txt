@@ -12,10 +12,8 @@ file(GLOB_RECURSE all_src
             "src/*.cpp"
         )
 
-add_executable(${GAME_NAME} ${all_src})
+add_executable(${GAME_NAME} ${all_src} src/tilemap/constants.h src/tilemap/Tilesheet.cpp src/tilemap/Tilesheet.h)
 
-#set(SFML_STATIC_LIBRARIES TRUE)
-#set(SFML_DIR ${CMAKE_SOURCE_DIR}/vcpkg/installed/x64-windows-static/share/sfml)
 find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
 find_package(jsoncpp CONFIG REQUIRED)
 

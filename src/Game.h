@@ -2,7 +2,7 @@
 #define GAME_GAME_H
 
 #include "gameobject/Player.h"
-#include "gameobject/Tilemap.h"
+#include "tilemap/Tilemap.h"
 
 class Game {
 private:
