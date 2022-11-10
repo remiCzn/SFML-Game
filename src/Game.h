@@ -8,7 +8,7 @@ class Game {
 private:
     std::shared_ptr<sf::RenderWindow> window;
     Player player;
-    Tilemap tilemap;
+    TilemapConsts tilemap;
     std::shared_ptr<sf::View> view;
 
     float dt;

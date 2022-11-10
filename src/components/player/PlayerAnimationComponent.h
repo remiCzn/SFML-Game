@@ -3,6 +3,8 @@
 
 #include "../GraphicsComponent.h"
 
+using namespace GraphcisConsts;
+
 enum Direction {
     Up,
     Down,

@@ -4,7 +4,7 @@
 
 PlayerInputComponent::PlayerInputComponent(std::shared_ptr<PhysicsComponent> physics) {
     this->_physics = std::move(physics);
-    this->speed_force = 400.f;
+    this->speed_force = PhysicsConsts::PLAYER_SPEED_FLOAT;
 }
 
 void PlayerInputComponent::handleInput(sf::Keyboard::Key &keycode) {

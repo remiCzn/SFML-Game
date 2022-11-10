@@ -2,6 +2,7 @@
 #define GAME_GRAPHICSCOMPONENT_H
 
 #include "defines.h"
+#include "constants.h"
 #include "PhysicsComponent.h"
 
 class GraphicsComponent {

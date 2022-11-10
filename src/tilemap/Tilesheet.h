@@ -4,6 +4,8 @@
 #include "defines.h"
 #include "constants.h"
 
+using TilemapConsts::TILE_SIZE;
+
 class Tilesheet {
 public:
     explicit Tilesheet(const std::string &tmj_path, const std::string &png_path);

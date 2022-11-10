@@ -28,7 +28,7 @@ Tilemap::Tilemap() : tileSheet(*new Tilesheet("assets/tilesheet/main_sheet.tsj",
 void Tilemap::addChunk(Json::Value chunk, size_t &layer_idx) {
     sf::VertexArray vertices;
     vertices.setPrimitiveType(sf::Quads);
-    vertices.resize(TILEMAP_SIZE * TILE_SIZE * 4);
+    vertices.resize(CHUNK_SIZE * CHUNK_SIZE * 4);
     int chunkX = chunk["x"].asInt();
     int chunkY = chunk["y"].asInt();
 
@@ -46,8 +46,8 @@ void Tilemap::addChunk(Json::Value chunk, size_t &layer_idx) {
 
 void Tilemap::addTile(const int &x, const int &y, const int &tile_idx, const std::unique_ptr<sf::VertexArray> &vertices,
                       const sf::Vector2f &offset) {
-    float realTileSize = TILEMAP_SIZE * 5;
-    sf::Vertex *quad = &(*vertices)[(x + y * TILEMAP_SIZE) * 4];
+    float realTileSize = CHUNK_SIZE * GraphcisConsts::SCALE;
+    sf::Vertex *quad = &(*vertices)[(x + y * CHUNK_SIZE) * 4];
 
     quad[0].position = realTileSize * (sf::Vector2f((float) x, (float) y) + offset);
     quad[1].position = realTileSize * (sf::Vector2f((float) x + 1, (float) y) + offset);

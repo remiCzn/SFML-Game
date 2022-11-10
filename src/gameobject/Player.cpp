@@ -1,7 +1,8 @@
 #include "Player.h"
 
 sf::Vector2i Player::getPlayerCenterPosition() {
-    return static_cast<sf::Vector2i>(this->_physics->getPosition()) + sf::Vector2i(38, 54);
+    return static_cast<sf::Vector2i>(this->_physics->getPosition()) +
+           sf::Vector2i(PLAYER_DIM.x * SCALE / 2, PLAYER_DIM.y * SCALE / 2);
 }
 
 Player::Player() : GameObject() {

@@ -2,12 +2,13 @@
 #define GAME_TILEMAP_H
 
 #include "defines.h"
+#include "constants.h"
 #include "Tilesheet.h"
+
+using namespace TilemapConsts;
 
 template<typename T>
 using Map = std::unordered_map<int, std::unordered_map<int, std::unordered_map<size_t, T>>>;
-
-const int TILEMAP_SIZE = 16;
 
 class Tilemap {
 public:

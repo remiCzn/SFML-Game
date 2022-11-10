@@ -11,7 +11,7 @@ GraphicsComponent::GraphicsComponent(const std::string &asset_path, sf::IntRect 
     this->texture_rect = intrect;
     this->_physics = std::move(physics);
     this->sprite = sf::Sprite(texture, this->texture_rect);
-    this->sprite.setScale(5.0, 5.0);
+    this->sprite.setScale(GraphcisConsts::SCALE, GraphcisConsts::SCALE);
 }
 
 

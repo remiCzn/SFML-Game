@@ -1,7 +1,7 @@
 #include "PlayerAnimationComponent.h"
 
 PlayerAnimationComponent::PlayerAnimationComponent(std::shared_ptr<PhysicsComponent> physics) : GraphicsComponent(
-        "assets/character/chara1.png", sf::IntRect(0, 0, 19, 27), std::move(physics)) {
+        "assets/character/chara1.png", sf::IntRect(0, 0, PLAYER_DIM.x, PLAYER_DIM.y), std::move(physics)) {
     this->direction = Down;
     this->animations.insert(std::make_pair(Down, sf::Vector2u(1, 0)));
     this->animations.insert(std::make_pair(Left, sf::Vector2u(1, 1)));
@@ -15,7 +15,7 @@ void PlayerAnimationComponent::update(const float &dt) {
 }
 
 void PlayerAnimationComponent::setTexture(int x, int y) {
-    this->sprite.setTextureRect(sf::IntRect(x * 19, y * 27, 19, 27));
+    this->sprite.setTextureRect(sf::IntRect(x * PLAYER_DIM.x, y * PLAYER_DIM.y, PLAYER_DIM.x, PLAYER_DIM.y));
 }
 
 void PlayerAnimationComponent::updateDirection() {

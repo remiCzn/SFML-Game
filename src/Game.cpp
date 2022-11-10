@@ -4,10 +4,11 @@
 
 Game::Game() {
     this->dt = 0.f;
-    this->window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Window Example");
+    this->window = std::make_shared<sf::RenderWindow>(
+            sf::VideoMode(WindowConsts::WINDOW_SIZE.x, WindowConsts::WINDOW_SIZE.y), "Window Example");
     this->view = std::make_shared<sf::View>();
     this->view->setCenter(0, 0);
-    this->view->setSize(800, 600);
+    this->view->setSize(WindowConsts::WINDOW_SIZE);
 }
 
 void Game::update() {
