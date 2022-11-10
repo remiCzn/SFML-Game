@@ -12,13 +12,14 @@ Game::Game() {
 
 void Game::update() {
     this->dt = this->dtClock.restart().asSeconds();
+    std::cout << "FPS: " << (int) (1 / this->dt) << std::endl;
     player.update(this->dt);
 }
 
 void Game::render() {
     this->window->clear(sf::Color::Black);
     this->window->setView(*this->view);
-    this->view->setCenter(this->player.getPlayerCenterPosition());
+    this->view->setCenter(static_cast<sf::Vector2f>(this->player.getPlayerCenterPosition()));
     tilemap.render(this->window);
     player.render(this->window);
     this->window->display();
@@ -39,7 +40,7 @@ void Game::handeEvent() {
     while (this->window->pollEvent(e)) {
         switch (e.type) {
             case sf::Event::Resized:
-                this->window->setView(sf::View(sf::FloatRect(0, 0, e.size.width, e.size.height)));
+                this->window->setView(sf::View(sf::FloatRect(0, 0, (float) e.size.width, (float) e.size.height)));
                 continue;
             case sf::Event::Closed:
                 this->window->close();

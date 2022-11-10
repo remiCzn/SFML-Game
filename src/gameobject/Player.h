@@ -9,7 +9,7 @@ class Player : public GameObject {
 public:
     Player();
 
-    sf::Vector2f getPlayerCenterPosition();
+    sf::Vector2i getPlayerCenterPosition();
 };
 
 
