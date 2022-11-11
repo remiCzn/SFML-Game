@@ -5,26 +5,20 @@
 Game::Game() {
     this->dt = 0.f;
     this->window = std::make_shared<sf::RenderWindow>(
-            sf::VideoMode(WindowConsts::WINDOW_SIZE.x, WindowConsts::WINDOW_SIZE.y), "Window Example");
-    this->view = std::make_shared<sf::View>();
-    this->view->setCenter(0, 0);
-    this->view->setSize(WindowConsts::WINDOW_SIZE);
+            sf::VideoMode((uint32_t) WindowConsts::WINDOW_SIZE.x, (uint32_t) WindowConsts::WINDOW_SIZE.y),
+            "Window Example");
 }
 
 void Game::update() {
     this->dt = this->dtClock.restart().asSeconds();
     std::cout << "FPS: " << (int) (1 / this->dt) << std::endl;
-    player.update(this->dt);
+    this->mainstate.update(this->dt);
 }
 
 void Game::render() {
     this->window->clear(sf::Color::Black);
-    this->window->setView(*this->view);
-    this->view->setCenter(static_cast<sf::Vector2f>(this->player.getPlayerCenterPosition()));
-    tilemap.render(this->window);
-    player.render(this->window);
+    this->mainstate.render(this->window);
     this->window->display();
-
 }
 
 void Game::run() {
@@ -47,7 +41,7 @@ void Game::handeEvent() {
                 this->window->close();
                 continue;
             case sf::Event::KeyPressed:
-                this->player.handleInput(e.key.code);
+                this->mainstate.handleInput(e.key.code);
             default:
                 continue;
         }

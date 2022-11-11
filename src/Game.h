@@ -3,13 +3,12 @@
 
 #include "gameobject/Player.h"
 #include "tilemap/Tilemap.h"
+#include "state/Mainstate.h"
 
 class Game {
 private:
     std::shared_ptr<sf::RenderWindow> window;
-    Player player;
-    TilemapConsts tilemap;
-    std::shared_ptr<sf::View> view;
+    Mainstate mainstate;
 
     float dt;
     sf::Clock dtClock;

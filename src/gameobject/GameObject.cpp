@@ -30,7 +30,7 @@ void GameObject::render(const std::shared_ptr<sf::RenderTarget> &target) {
     }
 }
 
-void GameObject::handleInput(sf::Keyboard::Key &keycode) {
+void GameObject::handleInput(const sf::Keyboard::Key &keycode) {
     if (this->_input) {
         this->_input->handleInput(keycode);
     }

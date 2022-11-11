@@ -18,7 +18,7 @@ public:
 
     void render(const std::shared_ptr<sf::RenderTarget> &target);
 
-    void handleInput(sf::Keyboard::Key &keycode);
+    void handleInput(const sf::Keyboard::Key &keycode);
 
 protected:
     std::shared_ptr<GraphicsComponent> _graphics;

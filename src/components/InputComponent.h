@@ -9,7 +9,7 @@ public:
 
     virtual void update() = 0;
 
-    virtual void handleInput(sf::Keyboard::Key &keycode) = 0;
+    virtual void handleInput(const sf::Keyboard::Key &keycode) = 0;
 };
 
 
