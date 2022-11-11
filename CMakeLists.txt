@@ -13,7 +13,7 @@ file(GLOB_RECURSE all_src
         "src/*.cpp"
         )
 
-add_executable(${GAME_NAME} ${all_src} src/state/Mainstate.cpp src/state/Mainstate.h)
+add_executable(${GAME_NAME} ${all_src} src/state/Mainstate.cpp src/state/Mainstate.h src/components/Animation.cpp src/components/Animation.h)
 
 find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
 find_package(jsoncpp CONFIG REQUIRED)

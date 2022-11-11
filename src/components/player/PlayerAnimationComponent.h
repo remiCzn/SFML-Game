@@ -2,6 +2,7 @@
 #define GAME_PLAYERANIMATIONCOMPONENT_H
 
 #include "../GraphicsComponent.h"
+#include "../Animation.h"
 
 using namespace GraphcisConsts;
 
@@ -13,7 +14,8 @@ enum Direction {
 };
 
 enum State {
-    Idle
+    Idle,
+    Walk
 };
 
 class PlayerAnimationComponent : public GraphicsComponent {
@@ -22,7 +24,7 @@ public:
 
     void update(const float &dt) override;
 
-    void setTexture(int x, int y);
+    void setTexture(const int &x, const int &y);
 
     void setDirection(const Direction &direction);
 
@@ -32,8 +34,8 @@ private:
     void updateDirection();
 
     Direction direction;
-    std::unordered_map<Direction, sf::Vector2i> animations;
+    State state;
+    std::unordered_map<Direction, std::unordered_map<State, std::unique_ptr<Animation<sf::Vector2i>>>> animations;
 };
-
 
 #endif //GAME_PLAYERANIMATIONCOMPONENT_H
