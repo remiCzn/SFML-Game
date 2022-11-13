@@ -4,20 +4,29 @@ PlayerAnimationComponent::PlayerAnimationComponent(std::shared_ptr<PhysicsCompon
         "assets/character/chara1.png", sf::IntRect(0, 0, PLAYER_DIM.x, PLAYER_DIM.y), std::move(physics)) {
     this->direction = Down;
     this->state = Idle;
-//    this->idle_animations.insert(std::make_pair(Down, sf::Vector2u(1, 0)));
-//    this->idle_animations.insert(std::make_pair(Left, sf::Vector2u(1, 1)));
-//    this->idle_animations.insert(std::make_pair(Right, sf::Vector2u(1, 2)));
-//    this->idle_animations.insert(std::make_pair(Up, sf::Vector2u(1, 3)));
 
-    this->animations[Down][Idle] = std::make_unique<Animation<sf::Vector2i>>(std::vector<sf::Vector2i>(), INFINITY);
-    this->animations[Left][Idle] = std::make_unique<Animation<sf::Vector2i>>(std::vector<sf::Vector2i>(), INFINITY);
-    this->animations[Right][Idle] = std::make_unique<Animation<sf::Vector2i>>(std::vector<sf::Vector2i>(), INFINITY);
-    this->animations[Up][Idle] = std::make_unique<Animation<sf::Vector2i>>(std::vector<sf::Vector2i>(), INFINITY);
+    this->initAnimation(Down, Idle, {sf::Vector2i(1, 0)}, INFINITY);
+    this->initAnimation(Left, Idle, {sf::Vector2i(1, 1)}, INFINITY);
+    this->initAnimation(Right, Idle, {sf::Vector2i(1, 2)}, INFINITY);
+    this->initAnimation(Up, Idle, {sf::Vector2i(1, 3)}, INFINITY);
 
-    this->animations[Down][Walk] = std::make_unique<Animation<sf::Vector2i>>(std::vector<sf::Vector2i>(), 0.5);
-    this->animations[Left][Walk] = std::make_unique<Animation<sf::Vector2i>>(std::vector<sf::Vector2i>(), 0.5);
-    this->animations[Right][Walk] = std::make_unique<Animation<sf::Vector2i>>(std::vector<sf::Vector2i>(), 0.5);
-    this->animations[Up][Walk] = std::make_unique<Animation<sf::Vector2i>>(std::vector<sf::Vector2i>(), 0.5);
+    this->initAnimation(Down, Walk, {
+            sf::Vector2i(0, 0), sf::Vector2i(1, 0), sf::Vector2i(2, 0), sf::Vector2i(1, 0)}, 0.5);
+    this->initAnimation(Left, Walk, {
+            sf::Vector2i(0, 1), sf::Vector2i(1, 1), sf::Vector2i(2, 1), sf::Vector2i(1, 1)}, 0.5);
+    this->initAnimation(Right, Walk, {
+            sf::Vector2i(0, 2), sf::Vector2i(1, 2), sf::Vector2i(2, 2), sf::Vector2i(1, 2)}, 0.5);
+    this->initAnimation(Up, Walk, {
+            sf::Vector2i(0, 3), sf::Vector2i(1, 3), sf::Vector2i(2, 3), sf::Vector2i(1, 3)}, 0.5);
+}
+
+void PlayerAnimationComponent::initAnimation(
+        Direction _direction,
+        State _state,
+        const std::vector<sf::Vector2i> &_frames,
+        float _delay
+) {
+    this->animations[_direction][_state] = std::make_unique<Animation<sf::Vector2i>>(_frames, _delay);
 }
 
 void PlayerAnimationComponent::update(const float &dt) {

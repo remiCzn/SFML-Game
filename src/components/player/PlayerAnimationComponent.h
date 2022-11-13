@@ -21,6 +21,8 @@ enum State {
 class PlayerAnimationComponent : public GraphicsComponent {
 public:
     explicit PlayerAnimationComponent(std::shared_ptr<PhysicsComponent> physics);
+    
+    void initAnimation(Direction direction, State state, const std::vector<sf::Vector2i> &frames, float delay);
 
     void update(const float &dt) override;
 

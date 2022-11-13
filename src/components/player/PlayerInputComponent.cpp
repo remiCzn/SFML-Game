@@ -7,7 +7,7 @@ PlayerInputComponent::PlayerInputComponent(std::shared_ptr<PhysicsComponent> phy
     this->speed_force = PhysicsConsts::PLAYER_SPEED_FLOAT;
 }
 
-void PlayerInputComponent::handleInput(sf::Keyboard::Key &keycode) {
+void PlayerInputComponent::handleInput(const sf::Keyboard::Key &keycode) {
 //    switch (keycode) {
 //        default:
 //            break;

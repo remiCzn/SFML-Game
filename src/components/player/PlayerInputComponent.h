@@ -8,7 +8,7 @@ class PlayerInputComponent : public InputComponent {
 public:
     explicit PlayerInputComponent(std::shared_ptr<PhysicsComponent> physics);
 
-    void handleInput(sf::Keyboard::Key &keycode) override;
+    void handleInput(const sf::Keyboard::Key &keycode) override;
 
     void update() override;
 
