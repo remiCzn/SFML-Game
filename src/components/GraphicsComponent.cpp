@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include <utility>
-#include "GraphicsComponent.h"
+#include "GraphicsComponent.hpp"
 
 GraphicsComponent::GraphicsComponent(const std::string &asset_path, sf::IntRect intrect,
                                      std::shared_ptr<PhysicsComponent> physics) {

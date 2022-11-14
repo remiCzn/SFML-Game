@@ -1,4 +1,4 @@
-#include "Healthbar.h"
+#include "Healthbar.hpp"
 
 Healthbar::Healthbar(int maxHealth) {
     this->currentHealth = maxHealth;

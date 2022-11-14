@@ -1,4 +1,4 @@
-#include "PlayerAnimationComponent.h"
+#include "PlayerAnimationComponent.hpp"
 
 PlayerAnimationComponent::PlayerAnimationComponent(std::shared_ptr<PhysicsComponent> physics) : GraphicsComponent(
         "assets/character/chara1.png", sf::IntRect(0, 0, PLAYER_DIM.x, PLAYER_DIM.y), std::move(physics)) {

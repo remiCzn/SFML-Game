@@ -1,5 +1,5 @@
-#ifndef GAME_TILESHEET_H
-#define GAME_TILESHEET_H
+#ifndef GAME_TILESHEET_HPP
+#define GAME_TILESHEET_HPP
 
 #include "defines.h"
 #include "constants.h"
@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif //GAME_TILESHEET_H
+#endif //GAME_TILESHEET_HPP

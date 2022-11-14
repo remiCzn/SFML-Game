@@ -1,4 +1,4 @@
-#include "Mainstate.h"
+#include "Mainstate.hpp"
 
 Mainstate::Mainstate() : hearthBar(Healthbar(12)) {
     this->view = std::make_shared<sf::View>();

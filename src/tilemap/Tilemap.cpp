@@ -1,4 +1,4 @@
-#include "Tilemap.h"
+#include "Tilemap.hpp"
 
 void Tilemap::render(const std::shared_ptr<sf::RenderTarget> &target) {
     for (auto &chunk_row: this->chunks) {

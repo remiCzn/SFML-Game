@@ -2,14 +2,14 @@
 // Created by cazin on 11/11/2022.
 //
 
-#ifndef GAME_MAINSTATE_H
-#define GAME_MAINSTATE_H
+#ifndef GAME_MAINSTATE_HPP
+#define GAME_MAINSTATE_HPP
 
 
-#include "../gameobject/Player.h"
-#include "../tilemap/Tilemap.h"
+#include "../gameobject/Player.hpp"
+#include "../tilemap/Tilemap.hpp"
 #include "defines.h"
-#include "../UI/Healthbar.h"
+#include "../UI/Healthbar.hpp"
 
 class Mainstate {
 public:
@@ -30,4 +30,4 @@ private:
 };
 
 
-#endif //GAME_MAINSTATE_H
+#endif //GAME_MAINSTATE_HPP

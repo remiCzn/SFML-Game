@@ -1,9 +1,9 @@
-#ifndef GAME_TILEMAP_H
-#define GAME_TILEMAP_H
+#ifndef GAME_TILEMAP_HPP
+#define GAME_TILEMAP_HPP
 
 #include "defines.h"
 #include "constants.h"
-#include "Tilesheet.h"
+#include "Tilesheet.hpp"
 
 using namespace TilemapConsts;
 
@@ -29,4 +29,4 @@ private:
 };
 
 
-#endif //GAME_TILEMAP_H
+#endif //GAME_TILEMAP_HPP

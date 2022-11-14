@@ -1,8 +1,8 @@
-#ifndef GAME_PLAYERINPUTCOMPONENT_H
-#define GAME_PLAYERINPUTCOMPONENT_H
+#ifndef GAME_PLAYERINPUTCOMPONENT_HPP
+#define GAME_PLAYERINPUTCOMPONENT_HPP
 
-#include "../InputComponent.h"
-#include "../GraphicsComponent.h"
+#include "../InputComponent.hpp"
+#include "../GraphicsComponent.hpp"
 
 class PlayerInputComponent : public InputComponent {
 public:
@@ -18,4 +18,4 @@ private:
 };
 
 
-#endif //GAME_PLAYERINPUTCOMPONENT_H
+#endif //GAME_PLAYERINPUTCOMPONENT_HPP

@@ -1,5 +1,5 @@
-#ifndef GAME_INPUTCOMPONENT_H
-#define GAME_INPUTCOMPONENT_H
+#ifndef GAME_INPUTCOMPONENT_HPP
+#define GAME_INPUTCOMPONENT_HPP
 
 #include "defines.h"
 
@@ -13,4 +13,4 @@ public:
 };
 
 
-#endif //GAME_INPUTCOMPONENT_H
+#endif //GAME_INPUTCOMPONENT_HPP

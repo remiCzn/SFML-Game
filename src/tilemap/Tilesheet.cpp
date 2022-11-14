@@ -1,4 +1,4 @@
-#include "Tilesheet.h"
+#include "Tilesheet.hpp"
 
 Tilesheet::Tilesheet(const std::string &tmj_path, const std::string &png_path) {
     if (!this->texture.loadFromFile(png_path)) {

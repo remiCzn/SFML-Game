@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "Player.hpp"
 
 sf::Vector2i Player::getPlayerCenterPosition() {
     return static_cast<sf::Vector2i>(this->_physics->getPosition()) +

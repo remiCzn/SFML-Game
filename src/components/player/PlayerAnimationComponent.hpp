@@ -1,8 +1,8 @@
-#ifndef GAME_PLAYERANIMATIONCOMPONENT_H
-#define GAME_PLAYERANIMATIONCOMPONENT_H
+#ifndef GAME_PLAYERANIMATIONCOMPONENT_HPP
+#define GAME_PLAYERANIMATIONCOMPONENT_HPP
 
-#include "../GraphicsComponent.h"
-#include "../Animation.h"
+#include "../GraphicsComponent.hpp"
+#include "../Animation.hpp"
 
 using namespace GraphcisConsts;
 
@@ -43,4 +43,4 @@ private:
     std::unordered_map<Direction, std::unordered_map<State, std::unique_ptr<Animation<sf::Vector2i>>>> animations;
 };
 
-#endif //GAME_PLAYERANIMATIONCOMPONENT_H
+#endif //GAME_PLAYERANIMATIONCOMPONENT_HPP

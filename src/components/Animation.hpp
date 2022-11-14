@@ -1,5 +1,5 @@
-#ifndef GAME_ANIMATION_H
-#define GAME_ANIMATION_H
+#ifndef GAME_ANIMATION_HPP
+#define GAME_ANIMATION_HPP
 
 #include "defines.h"
 
@@ -34,4 +34,4 @@ public:
 };
 
 
-#endif //GAME_ANIMATION_H
+#endif //GAME_ANIMATION_HPP

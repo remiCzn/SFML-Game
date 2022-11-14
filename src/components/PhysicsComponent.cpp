@@ -1,4 +1,4 @@
-#include "PhysicsComponent.h"
+#include "PhysicsComponent.hpp"
 
 PhysicsComponent::PhysicsComponent() {
     this->position = sf::Vector2f(0, 0);

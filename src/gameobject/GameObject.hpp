@@ -1,8 +1,8 @@
-#ifndef GAME_GAMEOBJECT_H
-#define GAME_GAMEOBJECT_H
+#ifndef GAME_GAMEOBJECT_HPP
+#define GAME_GAMEOBJECT_HPP
 
-#include "../components/GraphicsComponent.h"
-#include "../components/InputComponent.h"
+#include "../components/GraphicsComponent.hpp"
+#include "../components/InputComponent.hpp"
 
 class GameObject {
 public:
@@ -27,4 +27,4 @@ protected:
 };
 
 
-#endif //GAME_GAMEOBJECT_H
+#endif //GAME_GAMEOBJECT_HPP

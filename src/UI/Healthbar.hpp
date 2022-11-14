@@ -1,5 +1,5 @@
-#ifndef GAME_HEALTHBAR_H
-#define GAME_HEALTHBAR_H
+#ifndef GAME_HEALTHBAR_HPP
+#define GAME_HEALTHBAR_HPP
 
 #include "defines.h"
 
@@ -22,4 +22,4 @@ private:
 };
 
 
-#endif //GAME_HEALTHBAR_H
+#endif //GAME_HEALTHBAR_HPP

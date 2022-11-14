@@ -1,9 +1,9 @@
-#ifndef GAME_GRAPHICSCOMPONENT_H
-#define GAME_GRAPHICSCOMPONENT_H
+#ifndef GAME_GRAPHICSCOMPONENT_HPP
+#define GAME_GRAPHICSCOMPONENT_HPP
 
 #include "defines.h"
 #include "constants.h"
-#include "PhysicsComponent.h"
+#include "PhysicsComponent.hpp"
 
 class GraphicsComponent {
 public:
@@ -23,4 +23,4 @@ protected:
 };
 
 
-#endif //GAME_GRAPHICSCOMPONENT_H
+#endif //GAME_GRAPHICSCOMPONENT_HPP

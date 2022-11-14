@@ -1,4 +1,4 @@
-#include "GameObject.h"
+#include "GameObject.hpp"
 
 void GameObject::add_graphics_component(GraphicsComponent *graphicsComponent) {
     this->_graphics.reset(graphicsComponent);

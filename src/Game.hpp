@@ -1,9 +1,9 @@
-#ifndef GAME_GAME_H
-#define GAME_GAME_H
+#ifndef GAME_GAME_HPP
+#define GAME_GAME_HPP
 
-#include "gameobject/Player.h"
-#include "tilemap/Tilemap.h"
-#include "state/Mainstate.h"
+#include "gameobject/Player.hpp"
+#include "tilemap/Tilemap.hpp"
+#include "state/Mainstate.hpp"
 
 class Game {
 private:
@@ -28,4 +28,4 @@ public:
 };
 
 
-#endif //GAME_GAME_H
+#endif //GAME_GAME_HPP
