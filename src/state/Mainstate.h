@@ -9,6 +9,7 @@
 #include "../gameobject/Player.h"
 #include "../tilemap/Tilemap.h"
 #include "defines.h"
+#include "../UI/Healthbar.h"
 
 class Mainstate {
 public:
@@ -24,6 +25,8 @@ private:
     Player player;
     Tilemap tilemap;
     std::shared_ptr<sf::View> view;
+
+    Healthbar hearthBar;
 };
 
 

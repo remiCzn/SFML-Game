@@ -11,7 +11,7 @@ Game::Game() {
 
 void Game::update() {
     this->dt = this->dtClock.restart().asSeconds();
-    std::cout << "FPS: " << (int) (1 / this->dt) << std::endl;
+//    std::cout << "FPS: " << (int) (1 / this->dt) << std::endl;
     this->mainstate.update(this->dt);
 }
 

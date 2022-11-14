@@ -16,7 +16,7 @@ namespace PhysicsConsts {
 }
 
 namespace WindowConsts {
-    const sf::Vector2f WINDOW_SIZE = sf::Vector2f(800, 600);
+    const sf::Vector2f WINDOW_SIZE = sf::Vector2f(1280, 720);
 }
 
 #endif //GAME_CONSTANTS_H
