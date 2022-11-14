@@ -10,6 +10,7 @@
 #include "../tilemap/Tilemap.hpp"
 #include "defines.h"
 #include "../UI/Healthbar.hpp"
+#include "../gameobject/World.hpp"
 
 class Mainstate {
 public:
@@ -22,8 +23,7 @@ public:
     void handleInput(const sf::Keyboard::Key &key);
 
 private:
-    Player player;
-    Tilemap tilemap;
+    std::shared_ptr<World> world;
     std::shared_ptr<sf::View> view;
 
     Healthbar hearthBar;
