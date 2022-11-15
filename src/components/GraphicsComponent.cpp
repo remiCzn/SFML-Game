@@ -20,6 +20,6 @@ void GraphicsComponent::render(const std::shared_ptr<sf::RenderTarget> &target) 
 }
 
 void GraphicsComponent::update(const float &dt) {
-    this->sprite.setPosition((sf::Vector2f) (sf::Vector2i) this->_physics->getPosition());
+    this->sprite.setPosition((sf::Vector2f) (sf::Vector2i) this->_physics->getPosition() * GraphcisConsts::SCALE);
 }
 

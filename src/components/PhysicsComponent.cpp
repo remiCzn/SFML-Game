@@ -1,9 +1,10 @@
 #include "PhysicsComponent.hpp"
 
 PhysicsComponent::PhysicsComponent() {
-    this->position = sf::Vector2f(0, 0);
+    this->position = sf::Vector2f(-16 * TilemapConsts::TILE_SIZE,
+                                  -16 * TilemapConsts::TILE_SIZE);
     this->velocity = sf::Vector2f(0, 0);
-    this->box = sf::FloatRect(0, 0, 19, 27);
+    this->box = sf::FloatRect(this->position.x, this->position.x, 19, 27);
 }
 
 void PhysicsComponent::update(float dt) {

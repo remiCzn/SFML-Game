@@ -2,6 +2,7 @@
 #define GAME_PHYSICSCOMPONENT_HPP
 
 #include "defines.h"
+#include "constants.h"
 
 class PhysicsComponent {
 private:

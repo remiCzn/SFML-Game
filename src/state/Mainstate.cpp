@@ -15,7 +15,7 @@ void Mainstate::update(const float &dt) {
 
 void Mainstate::render(const std::shared_ptr<sf::RenderTarget> &target) {
     target->setView(*this->view);
-    this->view->setCenter(static_cast<sf::Vector2f>(this->world->get<Player>()->getPlayerCenterPosition()));
+    this->view->setCenter(static_cast<sf::Vector2f>(this->world->get<Player>()->getPlayerCenterPosition()) * SCALE);
     this->world->get<Tilemap>()->render(target);
     this->world->get<Player>()->render(target);
     target->setView(target->getDefaultView());

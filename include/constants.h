@@ -12,7 +12,7 @@ namespace GraphcisConsts {
 }
 
 namespace PhysicsConsts {
-    const float PLAYER_SPEED_FLOAT = 400.0;
+    const float PLAYER_SPEED_FLOAT = 80.0;
 }
 
 namespace WindowConsts {
