@@ -23,6 +23,21 @@ Tilemap::Tilemap() : tileSheet(*new Tilesheet("assets/tilesheet/main_sheet.tsj",
         }
         layer_idx++;
     }
+
+    Json::Value collision = map["layers"][1]["layers"][0]["chunks"];
+    for (auto &chunk: collision) {
+        this->addCollisionChunk(chunk);
+    }
+}
+
+void Tilemap::addCollisionChunk(Json::Value chunk) {
+    int chunkX = chunk["x"].asInt();
+    int chunkY = chunk["y"].asInt();
+    for (int i = 0; i < chunk["data"].size(); ++i) {
+        int x = i % CHUNK_SIZE;
+        int y = i / CHUNK_SIZE;
+        this->collisionChunks[chunkX][chunkY][x][y] = (chunk["data"][i].asInt() == 1);
+    }
 }
 
 void Tilemap::addChunk(Json::Value chunk, size_t &layer_idx) {
@@ -41,12 +56,12 @@ void Tilemap::addChunk(Json::Value chunk, size_t &layer_idx) {
                 sf::Vector2f((float) chunkX, (float) chunkY));
         idx++;
     }
-
 }
+
 
 void Tilemap::addTile(const int &x, const int &y, const int &tile_idx, const std::unique_ptr<sf::VertexArray> &vertices,
                       const sf::Vector2f &offset) {
-    float realTileSize = CHUNK_SIZE * GraphcisConsts::SCALE;
+    float realTileSize = CHUNK_SIZE;
     sf::Vertex *quad = &(*vertices)[(x + y * CHUNK_SIZE) * 4];
 
     quad[0].position = realTileSize * (sf::Vector2f((float) x, (float) y) + offset);
@@ -59,3 +74,9 @@ void Tilemap::addTile(const int &x, const int &y, const int &tile_idx, const std
     quad[2].texCoords = (float) TILE_SIZE * (this->tileSheet.getTextureCoord(tile_idx) + sf::Vector2f(1, 1));
     quad[3].texCoords = (float) TILE_SIZE * (this->tileSheet.getTextureCoord(tile_idx) + sf::Vector2f(0, 1));
 }
+
+bool Tilemap::intersects(const sf::FloatRect &rect) {
+    return false;
+}
+
+

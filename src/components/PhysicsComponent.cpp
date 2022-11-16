@@ -10,13 +10,12 @@ PhysicsComponent::PhysicsComponent() {
             static_cast<float>(GraphcisConsts::PLAYER_DIM.x),
             static_cast<float>(GraphcisConsts::PLAYER_DIM.y)
     );
-    this->boxshape.setSize(sf::Vector2f(this->box.width, this->box.height) * GraphcisConsts::SCALE);
     this->boxshape.setOutlineThickness(1.f);
     this->boxshape.setOutlineColor(sf::Color::Green);
     this->boxshape.setFillColor(sf::Color::Transparent);
 }
 
-void PhysicsComponent::update(float dt) {
+void PhysicsComponent::update(const float &dt) {
     this->getNextPosition(dt);
     this->position += this->velocity * dt;
     this->velocity = sf::Vector2f(0, 0);
@@ -45,6 +44,6 @@ const sf::Vector2f &PhysicsComponent::getVelocity() {
 const sf::FloatRect &PhysicsComponent::getNextPosition(const float &dt) {
     this->box.left = this->position.x + this->velocity.x * dt;
     this->box.top = this->position.y + this->velocity.y * dt;
-    this->boxshape.setPosition(this->box.left * GraphcisConsts::SCALE, this->box.top * GraphcisConsts::SCALE);
+    this->boxshape.setPosition(this->box.left, this->box.top);
     return this->box;
 }

@@ -15,7 +15,7 @@ private:
 public:
     PhysicsComponent();
 
-    void update(float dt);
+    void update(const float &dt);
 
     void render(const std::shared_ptr<sf::RenderTarget> &target);
 

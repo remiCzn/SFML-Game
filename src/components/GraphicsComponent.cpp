@@ -11,7 +11,6 @@ GraphicsComponent::GraphicsComponent(const std::string &asset_path, sf::IntRect 
     this->texture_rect = intrect;
     this->_physics = std::move(physics);
     this->sprite = sf::Sprite(texture, this->texture_rect);
-    this->sprite.setScale(GraphcisConsts::SCALE, GraphcisConsts::SCALE);
 }
 
 
@@ -20,6 +19,6 @@ void GraphicsComponent::render(const std::shared_ptr<sf::RenderTarget> &target) 
 }
 
 void GraphicsComponent::update(const float &dt) {
-    this->sprite.setPosition((sf::Vector2f) (sf::Vector2i) this->_physics->getPosition() * GraphcisConsts::SCALE);
+    this->sprite.setPosition((sf::Vector2f) (sf::Vector2i) this->_physics->getPosition());
 }
 

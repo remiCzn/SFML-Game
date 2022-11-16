@@ -8,7 +8,7 @@
 using namespace TilemapConsts;
 
 template<typename T>
-using Map = std::unordered_map<int, std::unordered_map<int, std::unordered_map<size_t, T>>>;
+using Map = std::unordered_map<int, std::unordered_map<int, T>>;
 
 class Tilemap {
 public:
@@ -18,14 +18,22 @@ public:
 
 private:
 
-    Map<std::unique_ptr<sf::VertexArray>> chunks;
+    Map<std::unordered_map<size_t, std::unique_ptr<sf::VertexArray>>> chunks;
+
+    Map<Map<bool>> collisionChunks;
 
     Tilesheet &tileSheet;
+
+    void addCollisionChunk(Json::Value chunk);
 
     void addChunk(Json::Value chunk, size_t &layer_idx);
 
     void addTile(const int &x, const int &y, const int &tile_idx, const std::unique_ptr<sf::VertexArray> &vertices,
                  const sf::Vector2f &offset);
+
+    bool intersects(const sf::FloatRect &rect);
+
+
 };
 
 
