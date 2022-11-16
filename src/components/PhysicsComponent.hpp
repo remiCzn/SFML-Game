@@ -10,10 +10,14 @@ private:
     sf::Vector2f velocity;
     sf::FloatRect box;
 
+    sf::RectangleShape boxshape;
+
 public:
     PhysicsComponent();
 
     void update(float dt);
+
+    void render(const std::shared_ptr<sf::RenderTarget> &target);
 
     void setVelocityX(float x);
 
@@ -22,6 +26,8 @@ public:
     const sf::Vector2f &getPosition();
 
     const sf::Vector2f &getVelocity();
+
+    const sf::FloatRect &getNextPosition(const float &dt);
 
 };
 

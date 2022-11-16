@@ -28,6 +28,10 @@ void GameObject::render(const std::shared_ptr<sf::RenderTarget> &target) {
     if (this->_graphics) {
         this->_graphics->render(target);
     }
+
+    if (this->_physics) {
+        this->_physics->render(target);
+    }
 }
 
 void GameObject::handleInput(const sf::Keyboard::Key &keycode) {
