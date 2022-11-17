@@ -3,6 +3,7 @@
 
 #include "defines.h"
 #include "constants.h"
+#include "../gameobject/World.hpp"
 
 class PhysicsComponent {
 private:
@@ -15,7 +16,7 @@ private:
 public:
     PhysicsComponent();
 
-    void update(const float &dt);
+    void update(const float &dt, std::shared_ptr<World> world);
 
     void render(const std::shared_ptr<sf::RenderTarget> &target);
 

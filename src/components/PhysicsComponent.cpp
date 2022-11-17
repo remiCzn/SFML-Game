@@ -15,7 +15,7 @@ PhysicsComponent::PhysicsComponent() {
     this->boxshape.setFillColor(sf::Color::Transparent);
 }
 
-void PhysicsComponent::update(const float &dt) {
+void PhysicsComponent::update(const float &dt, std::shared_ptr<World> world) {
     this->getNextPosition(dt);
     this->position += this->velocity * dt;
     this->velocity = sf::Vector2f(0, 0);

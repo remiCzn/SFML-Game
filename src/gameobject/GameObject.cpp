@@ -12,7 +12,7 @@ void GameObject::add_physics_component(PhysicsComponent *physicsComponent) {
     this->_physics.reset(physicsComponent);
 }
 
-void GameObject::update(const float &dt) {
+void GameObject::update(const float &dt, std::shared_ptr<World> world) {
     if (this->_input) {
         this->_input->update();
     }
@@ -20,7 +20,7 @@ void GameObject::update(const float &dt) {
         this->_graphics->update(dt);
     }
     if (this->_physics) {
-        this->_physics->update(dt);
+        this->_physics->update(dt, world);
     }
 }
 

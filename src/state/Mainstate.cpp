@@ -10,7 +10,7 @@ Mainstate::Mainstate() : hearthBar(Healthbar(12)) {
 }
 
 void Mainstate::update(const float &dt) {
-    this->world->get<Player>()->update(dt);
+    this->world->get<Player>()->update(dt, this->world);
 }
 
 void Mainstate::render(const std::shared_ptr<sf::RenderTarget> &target) {

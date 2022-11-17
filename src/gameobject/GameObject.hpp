@@ -3,6 +3,7 @@
 
 #include "../components/GraphicsComponent.hpp"
 #include "../components/InputComponent.hpp"
+#include "World.hpp"
 
 class GameObject {
 public:
@@ -14,7 +15,7 @@ public:
 
     void add_physics_component(PhysicsComponent *physicsComponent);
 
-    void update(const float &dt);
+    void update(const float &dt, std::shared_ptr<World> world);
 
     void render(const std::shared_ptr<sf::RenderTarget> &target);
 

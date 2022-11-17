@@ -33,7 +33,7 @@ Tilemap::Tilemap() : tileSheet(*new Tilesheet("assets/tilesheet/main_sheet.tsj",
 void Tilemap::addCollisionChunk(Json::Value chunk) {
     int chunkX = chunk["x"].asInt();
     int chunkY = chunk["y"].asInt();
-    for (int i = 0; i < chunk["data"].size(); ++i) {
+    for (size_t i = 0; i < chunk["data"].size(); ++i) {
         int x = i % CHUNK_SIZE;
         int y = i / CHUNK_SIZE;
         this->collisionChunks[chunkX][chunkY][x][y] = (chunk["data"][i].asInt() == 1);
