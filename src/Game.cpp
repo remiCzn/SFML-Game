@@ -1,49 +1,43 @@
 #include "Game.hpp"
+#include "scene/SceneIntroScreen.hpp"
+#include "scene/SceneGame.hpp"
 
-#include <memory>
+Game::Game() : window("Game") {
+    std::shared_ptr<SceneIntroScreen> introScreen = std::make_shared<SceneIntroScreen>(sceneStateMachine, window);
+    std::shared_ptr<SceneGame> sceneGame = std::make_shared<SceneGame>();
 
-Game::Game() {
-    this->dt = 0.f;
-    this->window = std::make_shared<sf::RenderWindow>(
-            sf::VideoMode((uint32_t) WindowConsts::WINDOW_SIZE.x, (uint32_t) WindowConsts::WINDOW_SIZE.y),
-            "Window Example");
+    unsigned int introScrennId = sceneStateMachine.add(introScreen);
+    unsigned int gameScreenId = sceneStateMachine.add(sceneGame);
+
+    introScreen->setSwitchToScene(gameScreenId);
+    sceneStateMachine.switchTo(introScrennId);
+
+    this->dt = clock.restart().asSeconds();
 }
 
 void Game::update() {
-    this->dt = this->dtClock.restart().asSeconds();
-//    std::cout << "FPS: " << (int) (1 / this->dt) << std::endl;
-    this->mainstate.update(this->dt);
+    window.update();
+    sceneStateMachine.update(this->dt);
 }
 
-void Game::render() {
-    this->window->clear(sf::Color::Black);
-    this->mainstate.render(this->window);
-    this->window->display();
+void Game::lateUpdate() {
+    sceneStateMachine.lateUpdate(this->dt);
 }
 
-void Game::run() {
-    while (this->window && this->window->isOpen()) {
-        this->handeEvent();
-        this->update();
-        this->render();
-    }
-    this->window->close();
+void Game::draw() {
+    window.beginDraw();
+    sceneStateMachine.draw(window);
+    window.endDraw();
 }
 
-void Game::handeEvent() {
-    sf::Event e{};
-    while (this->window->pollEvent(e)) {
-        switch (e.type) {
-            case sf::Event::Resized:
-                this->window->setView(sf::View(sf::FloatRect(0, 0, (float) e.size.width, (float) e.size.height)));
-                continue;
-            case sf::Event::Closed:
-                this->window->close();
-                continue;
-            case sf::Event::KeyPressed:
-                this->mainstate.handleInput(e.key.code);
-            default:
-                continue;
-        }
-    }
+bool Game::isRunning() const {
+    return window.isOpen();
+}
+
+void Game::updateDt() {
+    this->dt = clock.restart().asSeconds();
+}
+
+void Game::updateInput() {
+    sceneStateMachine.updateInput();
 }

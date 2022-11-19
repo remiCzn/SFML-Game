@@ -1,8 +1,14 @@
 #include "Game.hpp"
 
 int main() {
-
     Game game;
-    game.run();
+
+    while (game.isRunning()) {
+        game.updateInput();
+        game.update();
+        game.lateUpdate();
+        game.draw();
+        game.updateDt();
+    }
     return 0;
 }

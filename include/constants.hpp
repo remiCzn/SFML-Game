@@ -1,6 +1,8 @@
 #ifndef GAME_CONSTANTS_H
 #define GAME_CONSTANTS_H
 
+#include "defines.hpp"
+
 namespace TilemapConsts {
     const int CHUNK_SIZE = 16;
     const int TILE_SIZE = 16;
