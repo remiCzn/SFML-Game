@@ -3,7 +3,10 @@
 
 
 #include "Scene.hpp"
+#include "../component/Object.hpp"
 #include "../utils/Input.hpp"
+#include "../component/Sprite.hpp"
+#include "defines.hpp"
 
 class SceneGame : public Scene {
 public:
@@ -22,6 +25,8 @@ public:
 private:
     sf::Texture testTexture;
     sf::Sprite testSprite;
+
+    std::shared_ptr<Object> player;
 
     Input input;
 };
