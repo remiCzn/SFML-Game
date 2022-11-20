@@ -16,3 +16,7 @@ void Sprite::draw(Window &window) {
 void Sprite::setTextureRect(sf::IntRect textureRect) {
     this->sprite.setTextureRect(textureRect);
 }
+
+void Sprite::lateUpdate(const float &dt) {
+    this->sprite.setPosition(owner->transform->getPosition());
+}

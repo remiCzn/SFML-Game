@@ -20,6 +20,8 @@ public:
 
     void update(const float &dt) override;
 
+    void lateUpdate(const float &dt) override;
+
     void draw(Window &window) override;
 
 private:

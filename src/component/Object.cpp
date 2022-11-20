@@ -1,5 +1,9 @@
 #include "Object.hpp"
 
+Object::Object() {
+    transform = this->addComponent<Transform>();
+}
+
 void Object::awake() {
     for (int i = components.size() - 1; i >= 0; i--) {
         components[i]->awake();

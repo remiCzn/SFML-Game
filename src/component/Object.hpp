@@ -4,9 +4,12 @@
 
 #include "../utils/Window.hpp"
 #include "Component.hpp"
+#include "Transform.hpp"
 
 class Object {
 public:
+    Object();
+
     void awake();
 
     void start();
@@ -42,6 +45,8 @@ public:
 
         return nullptr;
     }
+
+    std::shared_ptr<Transform> transform;
 
 private:
     std::vector<std::shared_ptr<Component>> components;

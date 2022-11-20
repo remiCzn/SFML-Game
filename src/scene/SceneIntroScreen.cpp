@@ -9,7 +9,7 @@ SceneIntroScreen::SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window 
           stateMachine(
                   sceneStateMachine),
           currentTime(0),
-          showForSeconds(3),
+          showForSeconds(1),
           nextState(0) {}
 
 void SceneIntroScreen::onCreate() {
