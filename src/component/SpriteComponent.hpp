@@ -3,12 +3,17 @@
 
 #include "../objects/Object.hpp"
 #include "Component.hpp"
+#include "../utils/ResourceManager.hpp"
 
 class SpriteComponent : public Component {
 public:
     SpriteComponent(Object *owner);
 
+    void setTextureAllocator(ResourceManager<sf::Texture> *textureAllocator);
+
     void load(const std::string &filePath);
+
+    void load(int id);
 
     void setTextureRect(sf::IntRect textureRect);
 
@@ -17,8 +22,8 @@ public:
     void draw(Window &window) override;
 
 private:
-    sf::Texture texture;
     sf::Sprite sprite;
+    ResourceManager<sf::Texture> *allocator;
 };
 
 

@@ -6,6 +6,7 @@
 #include "constants.hpp"
 #include "utils/Input.hpp"
 #include "Scene/SceneStateMachine.hpp"
+#include "utils/ResourceManager.hpp"
 
 class Game {
 public:
@@ -30,6 +31,7 @@ private:
     float dt;
 
     SceneStateMachine sceneStateMachine;
+    ResourceManager <sf::Texture> textureAllocator;
 };
 
 

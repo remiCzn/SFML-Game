@@ -1,12 +1,15 @@
 #include "SpriteComponent.hpp"
 
-SpriteComponent::SpriteComponent(Object *owner) : Component(owner) {
+SpriteComponent::SpriteComponent(Object *owner) : Component(owner), allocator(nullptr) {
 
 }
 
 void SpriteComponent::load(const std::string &filePath) {
-    texture.loadFromFile(filePath);
-    sprite.setTexture(texture);
+    if (allocator) {
+        int textureId = allocator->add(filePath);
+
+        this->load(textureId);
+    }
 }
 
 void SpriteComponent::draw(Window &window) {
@@ -19,4 +22,15 @@ void SpriteComponent::setTextureRect(sf::IntRect textureRect) {
 
 void SpriteComponent::lateUpdate(const float &dt) {
     this->sprite.setPosition(owner->transform->getPosition());
+}
+
+void SpriteComponent::setTextureAllocator(ResourceManager<sf::Texture> *textureAllocator) {
+    this->allocator = textureAllocator;
+}
+
+void SpriteComponent::load(int id) {
+    if (id >= 0) {
+        std::shared_ptr<sf::Texture> texture = allocator->get(id);
+        sprite.setTexture(*texture);
+    }
 }
