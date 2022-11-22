@@ -1,11 +1,13 @@
 #include "SceneGame.hpp"
 #include "constants.hpp"
-#include "../component/InputMovement.hpp"
+#include "../component/InputComponent.hpp"
+#include "../component/AnimationComponent.hpp"
 
 SceneGame::SceneGame(Window &window) : window(window) {}
 
 void SceneGame::onActivate() {
     this->window.setScale(5);
+    this->player->awake();
 }
 
 void SceneGame::onDeactivate() {
@@ -14,12 +16,17 @@ void SceneGame::onDeactivate() {
 
 void SceneGame::onCreate() {
     player = std::make_shared<Object>();
-    auto sprite = player->addComponent<Sprite>();
+    auto sprite = player->addComponent<SpriteComponent>();
     sprite->load("assets/character/chara1.png");
     sprite->setTextureRect(sf::IntRect(0, 0, GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y));
 
-    auto movement = player->addComponent<InputMovement>();
+    auto movement = player->addComponent<InputComponent>();
     movement->setInput(&input);
+
+    auto animation = player->addComponent<AnimationComponent>();
+    animation->load("assets/character/animations.json");
+
+    tilemap = std::make_shared<Tilemap>();
 }
 
 void SceneGame::onDestroy() {
@@ -35,7 +42,9 @@ void SceneGame::update(const float &dt) {
 }
 
 void SceneGame::draw(Window &window) {
+    tilemap->draw(window);
     player->draw(window);
+    window.setCenter(player->transform->getPosition());
 }
 
 void SceneGame::lateUpdate(const float &dt) {

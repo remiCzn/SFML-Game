@@ -1,7 +1,7 @@
 #include "Object.hpp"
 
 Object::Object() {
-    transform = this->addComponent<Transform>();
+    transform = this->addComponent<TransformComponent>();
 }
 
 void Object::awake() {

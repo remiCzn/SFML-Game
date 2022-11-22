@@ -1,11 +1,11 @@
-#ifndef GAME_TRANSFORM_HPP
-#define GAME_TRANSFORM_HPP
+#ifndef GAME_TRANSFORMCOMPONENT_HPP
+#define GAME_TRANSFORMCOMPONENT_HPP
 
 #include "./Component.hpp"
 
-class Transform : public Component {
+class TransformComponent : public Component {
 public:
-    Transform(Object *owner);
+    TransformComponent(Object *owner);
 
     void setPosition(float x, float y);
 
@@ -30,4 +30,4 @@ private:
 };
 
 
-#endif //GAME_TRANSFORM_HPP
+#endif //GAME_TRANSFORMCOMPONENT_HPP

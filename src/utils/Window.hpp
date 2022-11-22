@@ -13,6 +13,8 @@ public:
 
     void draw(const sf::Drawable &drawable);
 
+    void draw(const sf::Drawable &drawable, const sf::RenderStates &states);
+
     void endDraw();
 
     sf::Vector2u getCenter() const;
@@ -20,6 +22,8 @@ public:
     sf::Vector2u getSize() const;
 
     void setScale(float scale);
+
+    void setCenter(sf::Vector2f position);
 
     bool isOpen() const;
 

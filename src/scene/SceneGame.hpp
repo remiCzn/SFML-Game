@@ -3,10 +3,11 @@
 
 
 #include "Scene.hpp"
-#include "../component/Object.hpp"
+#include "../objects/Object.hpp"
 #include "../utils/Input.hpp"
-#include "../component/Sprite.hpp"
+#include "../component/SpriteComponent.hpp"
 #include "defines.hpp"
+#include "../objects/Tilemap.hpp"
 
 class SceneGame : public Scene {
 public:
@@ -34,6 +35,8 @@ private:
 
     std::shared_ptr<Object> player;
     Window &window;
+
+    std::shared_ptr<Tilemap> tilemap;
 
     Input input;
 };

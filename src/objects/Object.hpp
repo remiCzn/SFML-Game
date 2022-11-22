@@ -3,8 +3,8 @@
 
 
 #include "../utils/Window.hpp"
-#include "Component.hpp"
-#include "Transform.hpp"
+#include "../component/Component.hpp"
+#include "../component/TransformComponent.hpp"
 
 class Object {
 public:
@@ -46,7 +46,7 @@ public:
         return nullptr;
     }
 
-    std::shared_ptr<Transform> transform;
+    std::shared_ptr<TransformComponent> transform;
 
 private:
     std::vector<std::shared_ptr<Component>> components;

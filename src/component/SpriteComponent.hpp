@@ -1,12 +1,12 @@
-#ifndef GAME_SPRITE_HPP
-#define GAME_SPRITE_HPP
+#ifndef GAME_SPRITECOMPONENT_HPP
+#define GAME_SPRITECOMPONENT_HPP
 
-#include "Object.hpp"
+#include "../objects/Object.hpp"
 #include "Component.hpp"
 
-class Sprite : public Component {
+class SpriteComponent : public Component {
 public:
-    Sprite(Object *owner);
+    SpriteComponent(Object *owner);
 
     void load(const std::string &filePath);
 
@@ -22,4 +22,4 @@ private:
 };
 
 
-#endif //GAME_SPRITE_HPP
+#endif //GAME_SPRITECOMPONENT_HPP

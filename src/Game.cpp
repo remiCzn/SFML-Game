@@ -10,7 +10,7 @@ Game::Game() : window("Game") {
     unsigned int gameScreenId = sceneStateMachine.add(sceneGame);
 
     introScreen->setSwitchToScene(gameScreenId);
-    sceneStateMachine.switchTo(gameScreenId);
+    sceneStateMachine.switchTo(introScrennId);
 
     this->dt = clock.restart().asSeconds();
 }
