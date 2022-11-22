@@ -2,6 +2,8 @@
 
 Window::Window(const std::string &windowname)
         : window(sf::VideoMode(800, 600), windowname) {
+    this->view = std::make_shared<sf::View>(this->window.getDefaultView());
+    this->view->setCenter(0, 0);
     window.setVerticalSyncEnabled(true);
 }
 
@@ -16,6 +18,7 @@ void Window::update() {
 
 void Window::beginDraw() {
     window.clear(sf::Color::Black);
+    window.setView(*this->view);
 }
 
 void Window::draw(const sf::Drawable &drawable) {
@@ -36,4 +39,10 @@ sf::Vector2u Window::getCenter() const {
 
 sf::Vector2u Window::getSize() const {
     return window.getSize();
+}
+
+void Window::setScale(float scale) {
+    sf::Vector2u size = this->window.getSize();
+    this->view->setSize(sf::Vector2f(size.x / scale, size.y / scale));
+    this->view->setCenter(0, 0);
 }

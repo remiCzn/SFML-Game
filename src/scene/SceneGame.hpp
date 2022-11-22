@@ -10,11 +10,15 @@
 
 class SceneGame : public Scene {
 public:
-    SceneGame();
+    explicit SceneGame(Window &window);
 
     void onCreate() override;
 
     void onDestroy() override;
+
+    void onActivate() override;
+
+    void onDeactivate() override;
 
     void updateInput() override;
 
@@ -29,6 +33,7 @@ private:
     sf::Sprite testSprite;
 
     std::shared_ptr<Object> player;
+    Window &window;
 
     Input input;
 };

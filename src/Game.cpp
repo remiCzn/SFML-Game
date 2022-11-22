@@ -4,13 +4,13 @@
 
 Game::Game() : window("Game") {
     std::shared_ptr<SceneIntroScreen> introScreen = std::make_shared<SceneIntroScreen>(sceneStateMachine, window);
-    std::shared_ptr<SceneGame> sceneGame = std::make_shared<SceneGame>();
+    std::shared_ptr<SceneGame> sceneGame = std::make_shared<SceneGame>(window);
 
     unsigned int introScrennId = sceneStateMachine.add(introScreen);
     unsigned int gameScreenId = sceneStateMachine.add(sceneGame);
 
     introScreen->setSwitchToScene(gameScreenId);
-    sceneStateMachine.switchTo(introScrennId);
+    sceneStateMachine.switchTo(gameScreenId);
 
     this->dt = clock.restart().asSeconds();
 }

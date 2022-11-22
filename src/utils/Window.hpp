@@ -19,10 +19,13 @@ public:
 
     sf::Vector2u getSize() const;
 
+    void setScale(float scale);
+
     bool isOpen() const;
 
 private:
     sf::RenderWindow window;
+    std::shared_ptr<sf::View> view;
 };
 
 

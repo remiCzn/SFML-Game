@@ -2,7 +2,15 @@
 #include "constants.hpp"
 #include "../component/InputMovement.hpp"
 
-SceneGame::SceneGame() = default;
+SceneGame::SceneGame(Window &window) : window(window) {}
+
+void SceneGame::onActivate() {
+    this->window.setScale(5);
+}
+
+void SceneGame::onDeactivate() {
+    this->window.setScale(1);
+}
 
 void SceneGame::onCreate() {
     player = std::make_shared<Object>();
