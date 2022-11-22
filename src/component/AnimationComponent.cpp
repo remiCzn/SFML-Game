@@ -60,39 +60,14 @@ void AnimationComponent::load(const std::string &asset_path) {
     Json::Value animation_sheet;
     f >> animation_sheet;
 
-    std::shared_ptr<Animation> walk_down = std::make_shared<Animation>();
-    walk_down->load(animation_sheet["down"]["walk"]);
-    this->addAnimation(AnimationState::Walk, FacingDirection::Down, walk_down);
-
-    std::shared_ptr<Animation> idle_down = std::make_shared<Animation>();
-    idle_down->load(animation_sheet["down"]["idle"]);
-    this->addAnimation(AnimationState::Idle, FacingDirection::Down, idle_down);
-
-    std::shared_ptr<Animation> walk_up = std::make_shared<Animation>();
-    walk_up->load(animation_sheet["up"]["walk"]);
-    this->addAnimation(AnimationState::Walk, FacingDirection::Up, walk_up);
-
-    std::shared_ptr<Animation> idle_up = std::make_shared<Animation>();
-    idle_up->load(animation_sheet["up"]["idle"]);
-    this->addAnimation(AnimationState::Idle, FacingDirection::Up, idle_up);
-
-    std::shared_ptr<Animation> walk_right = std::make_shared<Animation>();
-    walk_right->load(animation_sheet["right"]["walk"]);
-    this->addAnimation(AnimationState::Walk, FacingDirection::Right, walk_right);
-
-    std::shared_ptr<Animation> idle_right = std::make_shared<Animation>();
-    idle_right->load(animation_sheet["right"]["idle"]);
-    this->addAnimation(AnimationState::Idle, FacingDirection::Right, idle_right);
-
-    std::shared_ptr<Animation> walk_left = std::make_shared<Animation>();
-    walk_left->load(animation_sheet["left"]["walk"]);
-    this->addAnimation(AnimationState::Walk, FacingDirection::Left, walk_left);
-
-    std::shared_ptr<Animation> idle_left = std::make_shared<Animation>();
-    idle_left->load(animation_sheet["left"]["idle"]);
-    this->addAnimation(AnimationState::Idle, FacingDirection::Left, idle_left);
-
-
+    this->loadAnimation(FacingDirection::Down, AnimationState::Walk, "down", "walk", animation_sheet);
+    this->loadAnimation(FacingDirection::Down, AnimationState::Idle, "down", "idle", animation_sheet);
+    this->loadAnimation(FacingDirection::Up, AnimationState::Walk, "up", "walk", animation_sheet);
+    this->loadAnimation(FacingDirection::Up, AnimationState::Idle, "up", "idle", animation_sheet);
+    this->loadAnimation(FacingDirection::Left, AnimationState::Walk, "left", "walk", animation_sheet);
+    this->loadAnimation(FacingDirection::Left, AnimationState::Idle, "left", "idle", animation_sheet);
+    this->loadAnimation(FacingDirection::Right, AnimationState::Walk, "right", "walk", animation_sheet);
+    this->loadAnimation(FacingDirection::Right, AnimationState::Idle, "right", "idle", animation_sheet);
 }
 
 AnimationComponent::AnimationComponent(Object *owner) : Component(owner),
@@ -159,4 +134,11 @@ void AnimationComponent::update_frame() {
         const Animation::Frame *frame = this->currentAnimation->getCurrentFrame();
         this->sprite->setTextureRect(sf::IntRect(frame->x, frame->y, frame->width, frame->height));
     }
+}
+
+void AnimationComponent::loadAnimation(FacingDirection direction, AnimationState state, const std::string &raw_dir,
+                                       const std::string &raw_state, Json::Value &animation_sheet) {
+    std::shared_ptr<Animation> anim = std::make_shared<Animation>();
+    anim->load(animation_sheet[raw_dir][raw_state]);
+    this->addAnimation(state, direction, anim);
 }

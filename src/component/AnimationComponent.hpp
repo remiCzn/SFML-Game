@@ -65,6 +65,9 @@ public:
 
     void load(const std::string &asset_path);
 
+    void loadAnimation(FacingDirection direction, AnimationState state, const std::string &raw_dir,
+                       const std::string &raw_state, Json::Value &animation_sheet);
+
     const AnimationState &getAnimationState() const;
 
 private:
