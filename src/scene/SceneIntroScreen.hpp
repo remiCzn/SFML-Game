@@ -3,10 +3,12 @@
 
 
 #include "SceneStateMachine.hpp"
+#include "../utils/ResourceManager.hpp"
 
 class SceneIntroScreen : public Scene {
 public:
-    SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window &window);
+    SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window &window,
+                     ResourceManager<sf::Texture> &textureAllocator);
 
     void onCreate() override;
 
@@ -33,6 +35,8 @@ private:
     float currentTime;
 
     unsigned int nextState;
+
+    ResourceManager<sf::Texture> &textureAllocator;
 };
 
 

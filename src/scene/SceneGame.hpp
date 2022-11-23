@@ -8,10 +8,12 @@
 #include "../component/SpriteComponent.hpp"
 #include "defines.hpp"
 #include "../objects/Tilemap.hpp"
+#include "../utils/ResourceManager.hpp"
+#include "../objects/ObjectCollection.hpp"
 
 class SceneGame : public Scene {
 public:
-    explicit SceneGame(Window &window);
+    explicit SceneGame(Window &window, ResourceManager<sf::Texture> &textureAllocator);
 
     void onCreate() override;
 
@@ -30,15 +32,14 @@ public:
     void draw(Window &window) override;
 
 private:
-    sf::Texture testTexture;
-    sf::Sprite testSprite;
-
-    std::shared_ptr<Object> player;
     Window &window;
-
+    std::shared_ptr<Object> player;
     std::shared_ptr<Tilemap> tilemap;
 
     Input input;
+    ResourceManager<sf::Texture> &textureAllocator;
+    ObjectCollection objects;
+
 };
 
 
