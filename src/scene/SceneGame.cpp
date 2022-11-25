@@ -27,9 +27,10 @@ void SceneGame::onCreate() {
     auto animation = player->addComponent<AnimationComponent>();
     animation->load("assets/character/animations.json");
 
-    objects.add(player);
+    player->transform->setPosition(-8 * TILE_SIZE, -10 * TILE_SIZE);
 
-    tilemap = std::make_shared<Tilemap>();
+    objects.add(std::make_shared<Tilemap>());
+    objects.add(player);
 }
 
 void SceneGame::onDestroy() {
@@ -47,7 +48,6 @@ void SceneGame::update(const float &dt) {
 }
 
 void SceneGame::draw(Window &window) {
-    tilemap->draw(window);
     objects.draw(window);
     window.setCenter(player->transform->getPosition());
 }

@@ -4,7 +4,7 @@
 
 #include "TransformComponent.hpp"
 
-TransformComponent::TransformComponent(Object *owner) : Component(owner), position(0, 0) {
+TransformComponent::TransformComponent(Object *owner) : Component(owner), position(0, 0), _isStatic(false) {
 
 }
 
@@ -44,4 +44,12 @@ void TransformComponent::translateY(float y) {
 
 const sf::Vector2f &TransformComponent::getPosition() const {
     return this->position;
+}
+
+void TransformComponent::setStatic(bool isStatic) {
+    _isStatic = isStatic;
+}
+
+bool TransformComponent::isStatic() const {
+    return this->_isStatic;
 }

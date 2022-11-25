@@ -4,6 +4,7 @@ Tilemap::Tilesheet::Tilesheet(const std::string &tmj_path, const std::string &pn
     if (!this->texture.loadFromFile(png_path)) {
         std::cout << "Can't load texture for tilesheet" << std::endl;
     }
+
     std::fstream f(tmj_path);
     Json::Value tilesheet;
     f >> tilesheet;

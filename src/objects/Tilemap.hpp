@@ -4,17 +4,18 @@
 #include "defines.hpp"
 #include "constants.hpp"
 #include "../component/Component.hpp"
+#include "./Object.hpp"
 
 using namespace TilemapConsts;
 
 template<typename T>
 using Map = std::unordered_map<int, std::unordered_map<int, T>>;
 
-class Tilemap {
+class Tilemap : public Object {
 public:
     Tilemap();
 
-    void draw(Window &window);
+    void draw(Window &window) override;
 
 private:
 

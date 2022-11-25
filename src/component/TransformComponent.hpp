@@ -25,8 +25,13 @@ public:
 
     const sf::Vector2f &getPosition() const;
 
+    void setStatic(bool isStatic);
+
+    bool isStatic() const;
+
 private:
     sf::Vector2f position;
+    bool _isStatic;
 };
 
 

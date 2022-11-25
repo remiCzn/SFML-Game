@@ -18,7 +18,7 @@ public:
 
     void lateUpdate(const float &dt);
 
-    void draw(Window &window);
+    virtual void draw(Window &window);
 
     template<typename T>
     std::shared_ptr<T> addComponent() {
