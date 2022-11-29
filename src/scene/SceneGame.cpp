@@ -4,6 +4,8 @@
 #include "../component/AnimationComponent.hpp"
 #include "../component/tilemap/TilemapComponent.hpp"
 #include "../component/tilemap/TilemapDrawableComponent.hpp"
+#include "../objects/Tilemap.hpp"
+#include "../objects/Player.hpp"
 
 SceneGame::SceneGame(Window &window, ResourceManager<sf::Texture> &textureAllocator)
         : window(window), textureAllocator(textureAllocator) {}
@@ -17,28 +19,10 @@ void SceneGame::onDeactivate() {
 }
 
 void SceneGame::onCreate() {
-    player = std::make_shared<Object>();
-    auto sprite = player->addComponent<SpriteComponent>();
-    sprite->setTextureAllocator(&textureAllocator);
-    sprite->load("assets/character/chara1.png");
-    sprite->setTextureRect(sf::IntRect(0, 0, GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y));
+    player = std::make_shared<Player>(textureAllocator, input);
 
-    auto movement = player->addComponent<InputComponent>();
-    movement->setInput(&input);
+    std::shared_ptr<Object> tilemap = std::make_shared<Tilemap>();
 
-    auto animation = player->addComponent<AnimationComponent>();
-    animation->load("assets/character/animations.json");
-
-    player->transform->setPosition(-8 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
-
-    std::shared_ptr<Object> tilemap = std::make_shared<Object>();
-    tilemap->addComponent<TilemapComponent>();
-    tilemap->addComponent<TilemapDrawableComponent>();
-    tilemap->getComponent<TilemapComponent>()->load("assets/maps/test_map.tmj");
-    tilemap->getComponent<TilemapDrawableComponent>()->load("assets/tilesheet/main_sheet.tsj",
-                                                            "assets/tilesheet/main_sheet.png");
-
-//    objects.add(std::make_shared<Tilemap>());
     objects.add(tilemap);
     objects.add(player);
 }
