@@ -9,6 +9,9 @@
 #include "defines.hpp"
 #include "../utils/ResourceManager.hpp"
 #include "../objects/ObjectCollection.hpp"
+#include "constants.hpp"
+#include "../objects/Tilemap.hpp"
+#include "../objects/Player.hpp"
 
 class SceneGame : public Scene {
 public:

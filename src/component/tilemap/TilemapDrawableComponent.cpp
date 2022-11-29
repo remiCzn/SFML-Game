@@ -46,7 +46,7 @@ void TilemapDrawableComponent::load(const std::string &tilesheet_file, const std
 
             for (int x = 0; x < CHUNK_SIZE; x++) {
                 for (int y = 0; y < CHUNK_SIZE; y++) {
-                    for (int i = 0; i < 2; i++) {
+                    for (size_t i = 0; i < 2; i++) {
                         //TODO: refactor this way of drawing layers
                         if (ck[x][y].textureLayers.size() <= i) {
                             continue;

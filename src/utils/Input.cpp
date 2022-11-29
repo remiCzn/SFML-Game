@@ -1,7 +1,3 @@
-//
-// Created by cazin on 19/11/2022.
-//
-
 #include "Input.hpp"
 
 void Input::update() {

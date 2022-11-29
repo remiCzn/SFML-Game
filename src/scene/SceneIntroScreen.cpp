@@ -1,7 +1,3 @@
-//
-// Created by cazin on 19/11/2022.
-//
-
 #include "SceneIntroScreen.hpp"
 
 SceneIntroScreen::SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window &window,
@@ -26,10 +22,16 @@ void SceneIntroScreen::onCreate() {
         logoSprite.setScale(0.5f, 0.5f);
 
         sf::Vector2u wCenter = window.getCenter();
-        logoSprite.setPosition(wCenter.x, wCenter.y);
+        logoSprite.setPosition(
+                static_cast<float>(wCenter.x),
+                static_cast<float>(wCenter.y)
+        );
 
         this->background.setFillColor(sf::Color(126, 199, 175));
-        this->background.setSize(sf::Vector2f(window.getSize().x, window.getSize().y));
+        this->background.setSize(sf::Vector2f(
+                static_cast<float>(window.getSize().x),
+                static_cast<float>(window.getSize().y)
+        ));
 
     }
 }

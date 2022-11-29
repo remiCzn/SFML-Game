@@ -1,11 +1,4 @@
 #include "SceneGame.hpp"
-#include "constants.hpp"
-#include "../component/InputComponent.hpp"
-#include "../component/AnimationComponent.hpp"
-#include "../component/tilemap/TilemapComponent.hpp"
-#include "../component/tilemap/TilemapDrawableComponent.hpp"
-#include "../objects/Tilemap.hpp"
-#include "../objects/Player.hpp"
 
 SceneGame::SceneGame(Window &window, ResourceManager<sf::Texture> &textureAllocator)
         : window(window), textureAllocator(textureAllocator) {}
@@ -20,9 +13,7 @@ void SceneGame::onDeactivate() {
 
 void SceneGame::onCreate() {
     player = std::make_shared<Player>(textureAllocator, input);
-
     std::shared_ptr<Object> tilemap = std::make_shared<Tilemap>();
-
     objects.add(tilemap);
     objects.add(player);
 }

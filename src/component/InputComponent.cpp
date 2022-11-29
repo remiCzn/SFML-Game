@@ -4,12 +4,12 @@ InputComponent::InputComponent(Object *owner) : Component(owner), moveSpeed(100)
 
 }
 
-void InputComponent::setInput(Input *input) {
-    this->input = input;
+void InputComponent::setInput(Input *_input) {
+    this->input = _input;
 }
 
-void InputComponent::setMovementSpeed(int moveSpeed) {
-    this->moveSpeed = moveSpeed;
+void InputComponent::setMovementSpeed(int _moveSpeed) {
+    this->moveSpeed = _moveSpeed;
 }
 
 void InputComponent::update(const float &dt) {
@@ -19,15 +19,15 @@ void InputComponent::update(const float &dt) {
 
     sf::Vector2f move = sf::Vector2f(0, 0);
     if (input->isKeyPressed(Input::Key::Left)) {
-        move.x = -this->moveSpeed;
+        move.x = -static_cast<float>(this->moveSpeed);
     } else if (input->isKeyPressed(Input::Key::Right)) {
-        move.x = this->moveSpeed;
+        move.x = static_cast<float>(this->moveSpeed);
     }
 
     if (input->isKeyPressed(Input::Key::Up)) {
-        move.y = -this->moveSpeed;
+        move.y = -static_cast<float>(this->moveSpeed);
     } else if (input->isKeyPressed(Input::Key::Down)) {
-        move.y = this->moveSpeed;
+        move.y = static_cast<float>(this->moveSpeed);
     }
 
     if (move == sf::Vector2f(0, 0)) {

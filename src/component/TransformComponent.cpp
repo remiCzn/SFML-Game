@@ -1,7 +1,3 @@
-//
-// Created by cazin on 20/11/2022.
-//
-
 #include "TransformComponent.hpp"
 
 TransformComponent::TransformComponent(Object *owner) : Component(owner), position(0, 0), _isStatic(false) {
