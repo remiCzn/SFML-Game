@@ -7,7 +7,6 @@
 #include "../utils/Input.hpp"
 #include "../component/SpriteComponent.hpp"
 #include "defines.hpp"
-#include "../objects/Tilemap.hpp"
 #include "../utils/ResourceManager.hpp"
 #include "../objects/ObjectCollection.hpp"
 

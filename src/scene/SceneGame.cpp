@@ -2,6 +2,8 @@
 #include "constants.hpp"
 #include "../component/InputComponent.hpp"
 #include "../component/AnimationComponent.hpp"
+#include "../component/tilemap/TilemapComponent.hpp"
+#include "../component/tilemap/TilemapDrawableComponent.hpp"
 
 SceneGame::SceneGame(Window &window, ResourceManager<sf::Texture> &textureAllocator)
         : window(window), textureAllocator(textureAllocator) {}
@@ -27,9 +29,17 @@ void SceneGame::onCreate() {
     auto animation = player->addComponent<AnimationComponent>();
     animation->load("assets/character/animations.json");
 
-    player->transform->setPosition(-8 * TILE_SIZE, -10 * TILE_SIZE);
+    player->transform->setPosition(-8 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
 
-    objects.add(std::make_shared<Tilemap>());
+    std::shared_ptr<Object> tilemap = std::make_shared<Object>();
+    tilemap->addComponent<TilemapComponent>();
+    tilemap->addComponent<TilemapDrawableComponent>();
+    tilemap->getComponent<TilemapComponent>()->load("assets/maps/test_map.tmj");
+    tilemap->getComponent<TilemapDrawableComponent>()->load("assets/tilesheet/main_sheet.tsj",
+                                                            "assets/tilesheet/main_sheet.png");
+
+//    objects.add(std::make_shared<Tilemap>());
+    objects.add(tilemap);
     objects.add(player);
 }
 

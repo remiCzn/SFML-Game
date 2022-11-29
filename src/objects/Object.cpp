@@ -5,33 +5,31 @@ Object::Object() : queuedForRemoval(false) {
 }
 
 void Object::awake() {
-    for (int i = components.size() - 1; i >= 0; i--) {
-        components[i]->awake();
+    for (auto &c: components) {
+        c->awake();
     }
 }
 
 void Object::start() {
-    for (int i = components.size() - 1; i >= 0; i--) {
-        components[i]->start();
+    for (auto &c: components) {
+        c->start();
     }
 }
 
 void Object::update(const float &dt) {
-    for (int i = components.size() - 1; i >= 0; i--) {
-        components[i]->update(dt);
+    for (auto &c: components) {
+        c->update(dt);
     }
 }
 
 void Object::lateUpdate(const float &dt) {
-    for (int i = components.size() - 1; i >= 0; i--) {
-        components[i]->lateUpdate(dt);
+    for (auto &c: components) {
+        c->lateUpdate(dt);
     }
 }
 
 void Object::draw(Window &window) {
-    for (int i = components.size() - 1; i >= 0; i--) {
-        components[i]->draw(window);
-    }
+    drawable->draw(window);
 }
 
 bool Object::isQueuedForRemoval() const {
@@ -40,4 +38,8 @@ bool Object::isQueuedForRemoval() const {
 
 void Object::queueForRemoval() {
     queuedForRemoval = true;
+}
+
+std::shared_ptr<DrawableComponent> Object::getDrawable() {
+    return drawable;
 }

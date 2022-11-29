@@ -2,6 +2,7 @@
 #define GAME_OBJECTCOLLECTION_HPP
 
 #include "Object.hpp"
+#include "../system/DrawableSystem.hpp"
 
 class ObjectCollection {
 public:
@@ -20,6 +21,8 @@ public:
 private:
     std::vector<std::shared_ptr<Object>> objects;
     std::vector<std::shared_ptr<Object>> newObjects;
+
+    DrawableSystem drawables;
 };
 
 

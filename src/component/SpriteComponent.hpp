@@ -4,8 +4,9 @@
 #include "../objects/Object.hpp"
 #include "Component.hpp"
 #include "../utils/ResourceManager.hpp"
+#include "DrawableComponent.hpp"
 
-class SpriteComponent : public Component {
+class SpriteComponent : public Component, public DrawableComponent {
 public:
     SpriteComponent(Object *owner);
 

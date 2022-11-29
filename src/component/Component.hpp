@@ -16,11 +16,7 @@ public:
     virtual void update(const float &dt) {};
 
     virtual void lateUpdate(const float &dt) {};
-
-    virtual void draw(Window &window) {};
-
-
-protected:
+    
     Object *owner;
 };
 

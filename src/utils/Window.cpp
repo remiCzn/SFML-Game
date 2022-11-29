@@ -1,4 +1,5 @@
 #include "Window.hpp"
+#include <math.h>
 
 Window::Window(const std::string &windowname)
         : window(sf::VideoMode(800, 600), windowname) {
@@ -52,5 +53,5 @@ void Window::setScale(float scale) {
 }
 
 void Window::setCenter(sf::Vector2f position) {
-    this->view->setCenter(position);
+    this->view->setCenter(sf::Vector2f(floor(position.x), floor(position.y)));
 }

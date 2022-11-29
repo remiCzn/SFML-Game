@@ -5,6 +5,7 @@
 #include "../utils/Window.hpp"
 #include "../component/Component.hpp"
 #include "../component/TransformComponent.hpp"
+#include "../component/DrawableComponent.hpp"
 
 class Object {
 public:
@@ -32,6 +33,9 @@ public:
 
         std::shared_ptr<T> newComponent = std::make_shared<T>(this);
         components.push_back(newComponent);
+        if (std::dynamic_pointer_cast<DrawableComponent>(newComponent)) {
+            drawable = std::dynamic_pointer_cast<DrawableComponent>(newComponent);
+        }
         return newComponent;
     }
 
@@ -46,6 +50,8 @@ public:
         return nullptr;
     }
 
+    std::shared_ptr<DrawableComponent> getDrawable();
+
     bool isQueuedForRemoval() const;
 
     void queueForRemoval();
@@ -54,6 +60,7 @@ public:
 
 private:
     std::vector<std::shared_ptr<Component>> components;
+    std::shared_ptr<DrawableComponent> drawable;
     bool queuedForRemoval;
 };
 

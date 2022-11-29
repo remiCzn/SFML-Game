@@ -9,37 +9,37 @@ TransformComponent::TransformComponent(Object *owner) : Component(owner), positi
 }
 
 void TransformComponent::setPosition(float x, float y) {
-    position.x = x;
-    position.y = y;
+    position.x = round(x);
+    position.y = round(y);
 }
 
 void TransformComponent::setPosition(const sf::Vector2f &pos) {
-    position = pos;
+    setPosition(pos.x, pos.y);
 }
 
 void TransformComponent::translate(float x, float y) {
-    position.x += x;
-    position.y += y;
+    translateX(x);
+    translateY(y);
 }
 
 void TransformComponent::translate(sf::Vector2f pos) {
-    position += pos;
+    translate(pos.x, pos.y);
 }
 
 void TransformComponent::setX(float x) {
-    position.x = x;
+    position.x = round(x);
 }
 
 void TransformComponent::setY(float y) {
-    position.y = y;
+    position.y = round(y);
 }
 
 void TransformComponent::translateX(float x) {
-    position.x += x;
+    position.x += round(x);
 }
 
 void TransformComponent::translateY(float y) {
-    position.y += y;
+    position.y += round(y);
 }
 
 const sf::Vector2f &TransformComponent::getPosition() const {

@@ -17,9 +17,7 @@ void ObjectCollection::lateUpdate(const float &dt) {
 }
 
 void ObjectCollection::draw(Window &window) {
-    for (const auto &o: objects) {
-        o->draw(window);
-    }
+    drawables.draw(window);
 }
 
 void ObjectCollection::processNewObjects() {
@@ -32,7 +30,8 @@ void ObjectCollection::processNewObjects() {
             o->start();
         }
 
-        objects.assign(newObjects.begin(), newObjects.end());
+        objects.insert(objects.end(), newObjects.begin(), newObjects.end());
+        drawables.add(newObjects);
         newObjects.clear();
     }
 }
@@ -40,11 +39,12 @@ void ObjectCollection::processNewObjects() {
 void ObjectCollection::processRemovals() {
     auto objItr = objects.begin();
     while (objItr != objects.end()) {
-        auto obj = **objItr;
-        if (obj.isQueuedForRemoval()) {
+        auto obj = *objItr;
+        if (obj->isQueuedForRemoval()) {
             objItr = objects.erase(objItr);
         } else {
             ++objItr;
         }
     }
+    drawables.processRemovals();
 }
