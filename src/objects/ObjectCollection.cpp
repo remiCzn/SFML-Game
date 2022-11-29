@@ -37,14 +37,19 @@ void ObjectCollection::processNewObjects() {
 }
 
 void ObjectCollection::processRemovals() {
+    bool removed = false;
     auto objItr = objects.begin();
     while (objItr != objects.end()) {
         auto obj = *objItr;
         if (obj->isQueuedForRemoval()) {
             objItr = objects.erase(objItr);
+            removed = true;
         } else {
             ++objItr;
         }
     }
-    drawables.processRemovals();
+    if (removed) {
+        drawables.processRemovals();
+    }
+
 }

@@ -6,6 +6,7 @@
 #include "../component/Component.hpp"
 #include "../component/TransformComponent.hpp"
 #include "../component/DrawableComponent.hpp"
+#include "../component/InstanceIdComponent.hpp"
 
 class Object {
 public:
@@ -57,6 +58,7 @@ public:
     void queueForRemoval();
 
     std::shared_ptr<TransformComponent> transform;
+    std::shared_ptr<InstanceIdComponent> instanceID;
 
 private:
     std::vector<std::shared_ptr<Component>> components;

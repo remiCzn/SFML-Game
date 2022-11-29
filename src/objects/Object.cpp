@@ -2,6 +2,7 @@
 
 Object::Object() : queuedForRemoval(false) {
     transform = this->addComponent<TransformComponent>();
+    instanceID = this->addComponent<InstanceIdComponent>();
 }
 
 void Object::awake() {
