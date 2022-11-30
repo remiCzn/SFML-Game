@@ -1,30 +1,37 @@
 #ifndef GAME_GAME_HPP
 #define GAME_GAME_HPP
 
-#include "gameobject/Player.hpp"
-#include "tilemap/Tilemap.hpp"
-#include "state/Mainstate.hpp"
+
+#include "utils/Window.hpp"
+#include "constants.hpp"
+#include "utils/Input.hpp"
+#include "Scene/SceneStateMachine.hpp"
+#include "utils/ResourceManager.hpp"
 
 class Game {
-private:
-    std::shared_ptr<sf::RenderWindow> window;
-    Mainstate mainstate;
-
-    float dt;
-    sf::Clock dtClock;
-
 public:
     Game();
 
-    virtual ~Game() = default;
-
-    void handeEvent();
+    void updateInput();
 
     void update();
 
-    void render();
+    void lateUpdate();
 
-    void run();
+    void draw();
+
+    void updateDt();
+
+    bool isRunning() const;
+
+private:
+    Window window;
+
+    sf::Clock clock;
+    float dt;
+
+    SceneStateMachine sceneStateMachine;
+    ResourceManager <sf::Texture> textureAllocator;
 };
 
 
