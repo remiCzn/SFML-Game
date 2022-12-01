@@ -1,4 +1,7 @@
 cmake-build-*/
+node_modules/
+dist/
+package-lock.json
 .idea/
 vcpkg/
 out/
