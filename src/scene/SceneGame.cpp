@@ -34,7 +34,8 @@ void SceneGame::update(const float &dt) {
 
 void SceneGame::draw() {
     objects.draw(window);
-    window.setCenter(player->transform->getPosition());
+    window.setCenter(player->transform->getPosition() +
+                     sf::Vector2f(GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y) / 2.f);
 }
 
 void SceneGame::lateUpdate(const float &dt) {
