@@ -15,7 +15,7 @@ public:
 
     void lateUpdate(const float &dt);
 
-    void draw(Window &window);
+    void draw();
 
     unsigned int add(std::shared_ptr<Scene> scene);
 

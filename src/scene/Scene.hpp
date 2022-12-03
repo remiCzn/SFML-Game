@@ -6,6 +6,8 @@
 
 class Scene {
 public:
+    explicit Scene(Window &window) : window(window) {}
+
     virtual void onCreate() = 0;
 
     virtual void onDestroy() = 0;
@@ -20,7 +22,9 @@ public:
 
     virtual void lateUpdate(const float &dt) {};
 
-    virtual void draw(Window &window) {};
+    virtual void draw() {};
+protected:
+    Window &window;
 };
 
 
