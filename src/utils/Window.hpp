@@ -5,7 +5,7 @@
 
 class Window {
 public:
-    Window(const std::string &windowname);
+    explicit Window(const std::string &windowname);
 
     void update();
 
@@ -27,8 +27,13 @@ public:
 
     bool isOpen() const;
 
+    tgui::Gui &gui();
+
+    sf::Window & get();
+
 private:
     sf::RenderWindow window;
+    tgui::Gui tgui;
     std::shared_ptr<sf::View> view;
 };
 

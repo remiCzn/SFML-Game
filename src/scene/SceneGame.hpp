@@ -31,10 +31,9 @@ public:
 
     void lateUpdate(const float &dt) override;
 
-    void draw(Window &window) override;
+    void draw() override;
 
 private:
-    Window &window;
     std::shared_ptr<Object> player;
 
     Input input;
