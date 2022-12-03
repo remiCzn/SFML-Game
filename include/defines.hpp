@@ -3,6 +3,7 @@
 #include <string>
 #include <json/json.h>
 #include <unordered_map>
+#include <unordered_set>
 #include <fstream>
 #include <vector>
 

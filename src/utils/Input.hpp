@@ -23,9 +23,8 @@ public:
     bool isKeyUp(Key key);
 
 private:
-    std::unordered_map<int, bool> thisFrameKeys;
-    std::unordered_map<int, bool> lastFrameKeys;
-
+    std::unordered_set<Key> thisFrameKeys;
+    std::unordered_set<Key> lastFrameKeys;
 };
 
 
