@@ -1,16 +1,18 @@
 #include "Window.hpp"
-#include <math.h>
+#include <cmath>
 
 Window::Window(const std::string &windowname)
         : window(sf::VideoMode(800, 600), windowname) {
     this->view = std::make_shared<sf::View>(this->window.getDefaultView());
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(60);
+    tgui.setTarget(window);
 }
 
 void Window::update() {
     sf::Event event;
     if (window.pollEvent(event)) {
+        tgui.handleEvent(event);
         if (event.type == sf::Event::Closed) {
             window.close();
         }
@@ -54,4 +56,12 @@ void Window::setScale(float scale) {
 
 void Window::setCenter(sf::Vector2f position) {
     this->view->setCenter(sf::Vector2f(floor(position.x), floor(position.y)));
+}
+
+tgui::Gui &Window::gui() {
+    return this->tgui;
+}
+
+sf::Window & Window::get() {
+    return this->window;
 }

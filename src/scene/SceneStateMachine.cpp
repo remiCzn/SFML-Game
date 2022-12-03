@@ -22,9 +22,9 @@ void SceneStateMachine::lateUpdate(const float &dt) {
     }
 }
 
-void SceneStateMachine::draw(Window &window) {
+void SceneStateMachine::draw() {
     if (curScene) {
-        curScene->draw(window);
+        curScene->draw();
     }
 }
 

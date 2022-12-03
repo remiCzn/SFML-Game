@@ -2,7 +2,7 @@
 
 SceneIntroScreen::SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window &window,
                                    ResourceManager<sf::Texture> &textureAllocator)
-        : window(window),
+        : Scene(window),
           stateMachine(
                   sceneStateMachine),
           currentTime(0),
@@ -52,7 +52,7 @@ void SceneIntroScreen::update(const float &dt) {
     }
 }
 
-void SceneIntroScreen::draw(Window &window) {
+void SceneIntroScreen::draw() {
     window.draw(this->background);
     window.draw(this->logoSprite);
 }

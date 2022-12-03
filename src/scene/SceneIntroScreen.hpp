@@ -18,7 +18,7 @@ public:
 
     void update(const float &dt) override;
 
-    void draw(Window &window) override;
+    void draw() override;
 
     void setSwitchToScene(unsigned int id);
 
@@ -29,7 +29,6 @@ private:
     sf::RectangleShape background;
 
     SceneStateMachine &stateMachine;
-    Window &window;
 
     float showForSeconds;
     float currentTime;

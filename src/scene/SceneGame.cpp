@@ -1,7 +1,7 @@
 #include "SceneGame.hpp"
 
 SceneGame::SceneGame(Window &window, ResourceManager<sf::Texture> &textureAllocator)
-        : window(window), textureAllocator(textureAllocator) {}
+        : Scene(window), textureAllocator(textureAllocator) {}
 
 void SceneGame::onActivate() {
     this->window.setScale(5);
@@ -32,7 +32,7 @@ void SceneGame::update(const float &dt) {
     objects.update(dt);
 }
 
-void SceneGame::draw(Window &window) {
+void SceneGame::draw() {
     objects.draw(window);
     window.setCenter(player->transform->getPosition());
 }
