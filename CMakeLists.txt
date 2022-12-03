@@ -4,7 +4,7 @@ set(GAME_NAME Game)
 
 project(${GAME_NAME} VERSION 1.0)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 
 file(GLOB_RECURSE all_src
