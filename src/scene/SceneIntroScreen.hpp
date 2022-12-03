@@ -4,11 +4,11 @@
 
 #include "SceneStateMachine.hpp"
 #include "../utils/ResourceManager.hpp"
+#include "../UI/Text.hpp"
 
 class SceneIntroScreen : public Scene {
 public:
-    SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window &window,
-                     ResourceManager<sf::Texture> &textureAllocator);
+    SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window &window);
 
     void onCreate() override;
 
@@ -23,10 +23,7 @@ public:
     void setSwitchToScene(unsigned int id);
 
 private:
-    sf::Texture logoTexture;
-    sf::Sprite logoSprite;
-
-    sf::RectangleShape background;
+    Text text;
 
     SceneStateMachine &stateMachine;
 
@@ -34,8 +31,6 @@ private:
     float currentTime;
 
     unsigned int nextState;
-
-    ResourceManager<sf::Texture> &textureAllocator;
 };
 
 

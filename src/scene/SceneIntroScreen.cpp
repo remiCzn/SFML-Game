@@ -1,39 +1,20 @@
 #include "SceneIntroScreen.hpp"
 
-SceneIntroScreen::SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window &window,
-                                   ResourceManager<sf::Texture> &textureAllocator)
+SceneIntroScreen::SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window &window)
         : Scene(window),
           stateMachine(
                   sceneStateMachine),
           currentTime(0),
-          showForSeconds(0.5),
-          nextState(0),
-          textureAllocator(textureAllocator) {}
+          showForSeconds(2),
+          nextState(0) {}
 
 void SceneIntroScreen::onCreate() {
-
-    int textureId = textureAllocator.add("assets/UI/logo.jpg");
-    if (textureId >= 0) {
-        std::shared_ptr<sf::Texture> texture = textureAllocator.get(textureId);
-        this->logoSprite.setTexture(logoTexture);
-
-        const sf::FloatRect spriteSize = logoSprite.getGlobalBounds();
-        logoSprite.setOrigin(spriteSize.width / 2.f, spriteSize.height / 2.f);
-        logoSprite.setScale(0.5f, 0.5f);
-
-        sf::Vector2u wCenter = window.getCenter();
-        logoSprite.setPosition(
-                static_cast<float>(wCenter.x),
-                static_cast<float>(wCenter.y)
-        );
-
-        this->background.setFillColor(sf::Color(126, 199, 175));
-        this->background.setSize(sf::Vector2f(
-                static_cast<float>(window.getSize().x),
-                static_cast<float>(window.getSize().y)
-        ));
-
-    }
+    this->text.setCharacterSize(18);
+    this->text.setString(" remiCzn \r\n\r\npresents");
+    this->text.setPosition(
+            this->window.getCenter().x - this->text.getGlobalBounds().width / 2,
+            this->window.getCenter().y - this->text.getGlobalBounds().height / 2
+    );
 }
 
 void SceneIntroScreen::onDestroy() {
@@ -53,8 +34,7 @@ void SceneIntroScreen::update(const float &dt) {
 }
 
 void SceneIntroScreen::draw() {
-    window.draw(this->background);
-    window.draw(this->logoSprite);
+    window.draw(this->text);
 }
 
 void SceneIntroScreen::setSwitchToScene(unsigned int id) {

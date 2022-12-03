@@ -5,6 +5,7 @@
 #include "SceneStateMachine.hpp"
 #include "../utils/Input.hpp"
 #include "defines.hpp"
+#include "../UI/Text.hpp"
 
 class SceneMenu : public Scene {
 public:
@@ -31,8 +32,7 @@ private:
 
     Input input;
 
-    sf::Font font;
-    sf::Text title;
+    Text title;
     tgui::Button::Ptr startButton;
     tgui::Button::Ptr quitMenu;
 };

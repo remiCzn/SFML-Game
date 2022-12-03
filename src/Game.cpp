@@ -4,8 +4,7 @@
 #include "scene/SceneMenu.hpp"
 
 Game::Game() : window("Game") {
-    std::shared_ptr<SceneIntroScreen> introScreen = std::make_shared<SceneIntroScreen>(sceneStateMachine, window,
-                                                                                       this->textureAllocator);
+    std::shared_ptr<SceneIntroScreen> introScreen = std::make_shared<SceneIntroScreen>(sceneStateMachine, window);
     std::shared_ptr<SceneGame> sceneGame = std::make_shared<SceneGame>(window, this->textureAllocator);
 
     std::shared_ptr<SceneMenu> sceneMenu = std::make_shared<SceneMenu>(sceneStateMachine, window);
