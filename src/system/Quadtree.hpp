@@ -4,6 +4,8 @@
 #include "defines.hpp"
 #include "../component/collider/BoxColliderComponent.hpp"
 
+using Colliders = std::vector<std::shared_ptr<BoxColliderComponent>>;
+
 class Quadtree {
 public:
     Quadtree();
@@ -16,14 +18,16 @@ public:
 
     void clear();
 
+    std::vector<std::shared_ptr<BoxColliderComponent>>
+    search(const sf::FloatRect &area, std::vector<std::shared_ptr<BoxColliderComponent>> overlappingObjects);
+
     std::vector<std::shared_ptr<BoxColliderComponent>> search(const sf::FloatRect &area);
 
     const sf::FloatRect &getBounds();
 
 private:
-    void search(const sf::FloatRect &area, std::vector<std::shared_ptr<BoxColliderComponent>> &overlappingObjects);
 
-    int getChildIndexForObject(const sf::FloatRect &objectBounds) const;
+    int getChildIndexRectangleBelongsIn(const sf::FloatRect &objectBounds) const;
 
     void split();
 
@@ -33,15 +37,17 @@ private:
     static const int childSW = 2;
     static const int childSE = 3;
 
-    int maxObjects;
-    int maxLevels;
+    size_t maxObjects;
+    size_t maxLevels;
+    float defaultWidth;
+    float defaultHeight;
 
     Quadtree *parent;
     std::shared_ptr<Quadtree> children[4];
 
     std::vector<std::shared_ptr<BoxColliderComponent>> objects;
 
-    int level;
+    size_t level;
 
     sf::FloatRect bounds;
 };

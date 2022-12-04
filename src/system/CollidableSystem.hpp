@@ -21,9 +21,8 @@ private:
 
     void processCollisions(std::vector<std::shared_ptr<Object>> &first, std::vector<std::shared_ptr<Object>> &second);
 
-    std::map<int, int> collisionLayers;
-    std::map<int, std::vector<std::shared_ptr<BoxColliderComponent>>> collidables;
-
+//    std::unordered_set<int> collisions;
+    std::vector<std::shared_ptr<BoxColliderComponent>> collidables;
     Quadtree collisionTree;
 };
 

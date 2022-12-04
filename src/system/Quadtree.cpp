@@ -1,47 +1,42 @@
 #include "Quadtree.hpp"
 
-Quadtree::Quadtree() : Quadtree(5, 5, 0, {0, 0, 800, 600}, nullptr) {}
+Quadtree::Quadtree() : Quadtree(10, 5, 0, {0, 0, defaultWidth, defaultHeight}, nullptr) {}
 
 Quadtree::Quadtree(int maxObjects, int maxLevels, int level, sf::FloatRect bounds, Quadtree *parent)
         : maxObjects(maxObjects), maxLevels(maxLevels), level(level), bounds(bounds), parent(parent) {}
 
 void Quadtree::insert(const std::shared_ptr<BoxColliderComponent> &object) {
-    if (!bounds.intersects(object->getCollidable())) {
-        return;
-    }
-
     if (children[0] != nullptr) {
-        int indexToPlaceObject = getChildIndexForObject(object->getCollidable());
+        int indexToPlaceObject = getChildIndexRectangleBelongsIn(object->getCollidable());
 
         if (indexToPlaceObject != thisTree) {
             children[indexToPlaceObject]->insert(object);
             return;
         }
+    }
+    objects.emplace_back(object);
 
-        objects.emplace_back(object);
+    if (objects.size() > maxObjects && level < maxLevels) {
+        split();
 
-        if (objects.size() > maxObjects && level < maxLevels && children[0] == nullptr) {
-            split();
-            auto objIterator = objects.begin();
-            while (objIterator != objects.end()) {
-                auto obj = *objIterator;
-                int indexToPlaceObject = getChildIndexForObject(obj->getCollidable());
+        size_t i = 0;
+        while (i < objects.size()) {
+            int indexToPlaceObject = getChildIndexRectangleBelongsIn(objects.at(i)->getCollidable());
 
-                if (indexToPlaceObject != thisTree) {
-                    children[indexToPlaceObject]->insert(obj);
-                    objIterator = objects.erase(objIterator);
-                } else {
-                    objIterator++;
-                }
+            if (indexToPlaceObject != thisTree) {
+                children[indexToPlaceObject]->insert(objects.at(i));
+                objects.erase(objects.begin() + i);
+            } else {
+                i++;
             }
         }
     }
 }
 
 void Quadtree::remove(std::shared_ptr<BoxColliderComponent> object) {
-    int index = getChildIndexForObject(object->getCollidable());
+    int index = getChildIndexRectangleBelongsIn(object->getCollidable());
     if (index == thisTree || children[index] == nullptr) {
-        for (int i = 0; i < objects.size(); i++) {
+        for (size_t i = 0; i < objects.size(); i++) {
             if (objects.at(i)->owner->instanceID.get() == object->owner->instanceID.get()) {
                 objects.erase(objects.begin() + i);
                 break;
@@ -62,18 +57,34 @@ void Quadtree::clear() {
     }
 }
 
-std::vector<std::shared_ptr<BoxColliderComponent>> Quadtree::search(const sf::FloatRect &area) {
-    std::vector<std::shared_ptr<BoxColliderComponent>> possibleOverlaps;
-    search(area, possibleOverlaps);
+Colliders Quadtree::search(const sf::FloatRect &area, Colliders overlappingObjects) {
+    overlappingObjects.insert(overlappingObjects.end(), objects.begin(), objects.end());
 
-    std::vector<std::shared_ptr<BoxColliderComponent>> returnList;
+    int index = getChildIndexRectangleBelongsIn(area);
+
+    if (index == thisTree || children[0] == nullptr) {
+        if (children[0] != nullptr) {
+            for (int i = 0; i < 4; i++) {
+                if (children[i]->getBounds().intersects(area)) {
+                    children[i]->search(area, overlappingObjects);
+                }
+            }
+        }
+    } else if (children[index] != nullptr) {
+        children[index]->search(area, overlappingObjects);
+    }
+    return overlappingObjects;
+}
+
+Colliders Quadtree::search(const sf::FloatRect &area) {
+    Colliders returnList;
+    Colliders possibleOverlaps = this->search(area, Colliders());
 
     for (const auto &collider: possibleOverlaps) {
         if (area.intersects(collider->getCollidable())) {
             returnList.emplace_back(collider);
         }
     }
-
     return returnList;
 }
 
@@ -81,25 +92,8 @@ const sf::FloatRect &Quadtree::getBounds() {
     return bounds;
 }
 
-void
-Quadtree::search(const sf::FloatRect &area, std::vector<std::shared_ptr<BoxColliderComponent>> &overlappingObjects) {
-    overlappingObjects.insert(overlappingObjects.end(), objects.begin(), objects.end());
 
-    if (children[0] != nullptr) {
-        int index = getChildIndexForObject(area);
-        if (index == thisTree) {
-            for (auto &i: children) {
-                if (i->getBounds().intersects(area)) {
-                    i->search(area, overlappingObjects);
-                }
-            }
-        } else {
-            children[index]->search(area, overlappingObjects);
-        }
-    }
-}
-
-int Quadtree::getChildIndexForObject(const sf::FloatRect &objectBounds) const {
+int Quadtree::getChildIndexRectangleBelongsIn(const sf::FloatRect &objectBounds) const {
     int index = -1;
     double verticalDividingLine = bounds.left + bounds.width / 2.f;
     double horizontalDividingLine = bounds.top + bounds.height / 2.f;

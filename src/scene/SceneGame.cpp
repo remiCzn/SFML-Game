@@ -1,4 +1,5 @@
 #include "SceneGame.hpp"
+#include "../objects/Chest.hpp"
 
 SceneGame::SceneGame(Window &window, ResourceManager<sf::Texture> &textureAllocator)
         : Scene(window), textureAllocator(textureAllocator) {}
@@ -14,7 +15,9 @@ void SceneGame::onDeactivate() {
 void SceneGame::onCreate() {
     player = std::make_shared<Player>(textureAllocator, input);
     std::shared_ptr<Object> tilemap = std::make_shared<Tilemap>();
+    auto chest = std::make_shared<Chest>(textureAllocator);
     objects.add(tilemap);
+    objects.add(chest);
     objects.add(player);
 }
 

@@ -32,6 +32,7 @@ void ObjectCollection::processNewObjects() {
 
         objects.insert(objects.end(), newObjects.begin(), newObjects.end());
         drawables.add(newObjects);
+        collidables.add(newObjects);
         newObjects.clear();
     }
 }
@@ -50,6 +51,7 @@ void ObjectCollection::processRemovals() {
     }
     if (removed) {
         drawables.processRemovals();
+        collidables.processRemovals();
     }
 
 }
