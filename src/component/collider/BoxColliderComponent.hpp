@@ -23,13 +23,20 @@ public:
 
     const sf::FloatRect &getCollidable();
 
-    void setOrigin(const Origin &origin);
+    sf::FloatRect getPreviousFrameCollidable() const;
+
+    void setOffset(const sf::Vector2f &_offset);
+
+    void setOffset(float x, float y);
+
+    void setSize(const sf::Vector2f &size);
+
+    void setSize(float width, float height);
 
 private:
     void setPosition();
 
     sf::FloatRect AABB;
-    Origin origin;
     sf::Vector2f offset;
 };
 

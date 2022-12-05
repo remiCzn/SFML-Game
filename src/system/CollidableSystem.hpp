@@ -14,10 +14,13 @@ public:
 
     void processRemovals();
 
+    void updatePosition(std::vector<std::shared_ptr<Object>> &objects);
+
+    void resolve();
+
     void update();
 
 private:
-    void resolve();
 
     void processCollisions(std::vector<std::shared_ptr<Object>> &first, std::vector<std::shared_ptr<Object>> &second);
 

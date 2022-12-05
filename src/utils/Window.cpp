@@ -62,6 +62,10 @@ tgui::Gui &Window::gui() {
     return this->tgui;
 }
 
-sf::Window & Window::get() {
+sf::Window &Window::get() {
     return this->window;
+}
+
+void Window::draw(const sf::Vertex *vertices, std::size_t vertexCount, sf::PrimitiveType type) {
+    window.draw(vertices, vertexCount, type);
 }

@@ -12,22 +12,25 @@ public:
 
     Quadtree(int maxObjects, int maxLevels, int level, sf::FloatRect bounds, Quadtree *parent);
 
+    void drawDebug();
+
     void insert(const std::shared_ptr<BoxColliderComponent> &object);
 
-    void remove(std::shared_ptr<BoxColliderComponent> object);
+    void remove(const std::shared_ptr<BoxColliderComponent> &object);
 
     void clear();
 
-    std::vector<std::shared_ptr<BoxColliderComponent>>
-    search(const sf::FloatRect &area, std::vector<std::shared_ptr<BoxColliderComponent>> overlappingObjects);
+    void updatePosition(const std::shared_ptr<BoxColliderComponent> &object);
 
-    std::vector<std::shared_ptr<BoxColliderComponent>> search(const sf::FloatRect &area);
+    Colliders search(const sf::FloatRect &area);
 
     const sf::FloatRect &getBounds();
 
 private:
 
-    int getChildIndexRectangleBelongsIn(const sf::FloatRect &objectBounds) const;
+    void search(const sf::FloatRect &area, Colliders &overlappingObjects);
+
+    int getChildIndexForObject(const sf::FloatRect &objectBounds) const;
 
     void split();
 
@@ -39,8 +42,6 @@ private:
 
     size_t maxObjects;
     size_t maxLevels;
-    float defaultWidth;
-    float defaultHeight;
 
     Quadtree *parent;
     std::shared_ptr<Quadtree> children[4];

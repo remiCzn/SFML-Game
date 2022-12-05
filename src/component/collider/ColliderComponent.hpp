@@ -7,7 +7,7 @@
 
 struct Manifold {
     bool colliding = false;
-    sf::FloatRect other;
+    const sf::FloatRect *other;
 };
 
 class ColliderComponent : public Component {
@@ -20,12 +20,6 @@ public:
 
     virtual void resolveOverlap(const Manifold &m) = 0;
 
-    bool isTrigger() const;
-
-    void setTrigger(bool isTrigger);
-
-private:
-    bool _isTrigger;
 };
 
 

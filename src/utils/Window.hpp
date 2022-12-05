@@ -15,6 +15,8 @@ public:
 
     void draw(const sf::Drawable &drawable, const sf::RenderStates &states);
 
+    void draw(const sf::Vertex *vertices, std::size_t vertexCount, sf::PrimitiveType type);
+
     void endDraw();
 
     sf::Vector2u getCenter() const;
@@ -29,7 +31,7 @@ public:
 
     tgui::Gui &gui();
 
-    sf::Window & get();
+    sf::Window &get();
 
 private:
     sf::RenderWindow window;

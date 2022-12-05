@@ -10,10 +10,11 @@ Chest::Chest(ResourceManager<sf::Texture> &textureAllocator) : Object() {
     sprite->setTextureRect(sf::IntRect(512, 336, 16, 32));
 
     auto collider = this->addComponent<BoxColliderComponent>();
-    collider->setCollidable(sf::FloatRect(0, 5, 16, 20));
+    collider->setSize(16, 20);
+    collider->setOffset(0, 5);
 
     this->transform->setPosition(-6 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
-
+    this->transform->setStatic(true);
 }
 
 

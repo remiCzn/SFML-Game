@@ -1,8 +1,7 @@
 #include "CollidableSystem.hpp"
+#include "../utils/Debug.hpp"
 
-CollidableSystem::CollidableSystem() {
-
-}
+CollidableSystem::CollidableSystem() = default;
 
 void CollidableSystem::add(std::vector<std::shared_ptr<Object>> &objects) {
     for (auto &o: objects) {
@@ -27,11 +26,11 @@ void CollidableSystem::processRemovals() {
 }
 
 void CollidableSystem::update() {
+    collisionTree.drawDebug();
     collisionTree.clear();
     for (const auto &collidable: collidables) {
         collisionTree.insert(collidable);
     }
-    resolve();
 }
 
 void CollidableSystem::resolve() {
@@ -50,6 +49,9 @@ void CollidableSystem::resolve() {
             Manifold m = collidable->intersects(collision);
 
             if (m.colliding) {
+                Debug::drawRect(collision->getCollidable(), sf::Color::Red);
+                Debug::drawRect(collidable->getCollidable(), sf::Color::Red);
+
                 if (collision->owner->transform->isStatic()) {
                     collidable->resolveOverlap(m);
                 } else {
@@ -61,7 +63,14 @@ void CollidableSystem::resolve() {
     }
 }
 
-void CollidableSystem::processCollisions(std::vector<std::shared_ptr<Object>> &first,
-                                         std::vector<std::shared_ptr<Object>> &second) {
+void CollidableSystem::updatePosition(std::vector<std::shared_ptr<Object>> &objects) {
+    for (auto o: objects) {
+        if (!o->transform->isStatic()) {
+            auto collider = o->getComponent<BoxColliderComponent>();
 
+            if (collider) {
+                collisionTree.updatePosition(collider);
+            }
+        }
+    }
 }

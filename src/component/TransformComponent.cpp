@@ -1,8 +1,10 @@
 #include "TransformComponent.hpp"
 
-TransformComponent::TransformComponent(Object *owner) : Component(owner), position(0, 0), _isStatic(false) {
-
-}
+TransformComponent::TransformComponent(Object *owner)
+        : Component(owner),
+          position(0, 0),
+          _isStatic(false),
+          previousFramePosition(0, 0) {}
 
 void TransformComponent::setPosition(float x, float y) {
     position.x = round(x);
@@ -48,4 +50,12 @@ void TransformComponent::setStatic(bool isStatic) {
 
 bool TransformComponent::isStatic() const {
     return this->_isStatic;
+}
+
+void TransformComponent::lateUpdate(const float &dt) {
+    previousFramePosition = position;
+}
+
+const sf::Vector2f &TransformComponent::getPreviousFramePosition() const {
+    return this->previousFramePosition;
 }

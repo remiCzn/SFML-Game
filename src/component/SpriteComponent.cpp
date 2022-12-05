@@ -21,7 +21,13 @@ void SpriteComponent::setTextureRect(sf::IntRect textureRect) {
 }
 
 void SpriteComponent::lateUpdate(const float &dt) {
-    this->sprite.setPosition(owner->transform->getPosition());
+    sf::Vector2f pos = owner->transform->getPosition();
+    const sf::IntRect &spriteBounds = sprite.getTextureRect();
+    const sf::Vector2f &spriteScale = sprite.getScale();
+    sprite.setPosition(
+            pos.x - (fabs(spriteBounds.width) / 2 * spriteScale.x),
+            pos.y - (fabs(spriteBounds.height) / 2 * spriteScale.y)
+    );
 }
 
 void SpriteComponent::setTextureAllocator(ResourceManager<sf::Texture> *textureAllocator) {

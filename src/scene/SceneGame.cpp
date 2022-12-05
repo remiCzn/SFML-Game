@@ -1,5 +1,6 @@
 #include "SceneGame.hpp"
 #include "../objects/Chest.hpp"
+#include "../utils/Debug.hpp"
 
 SceneGame::SceneGame(Window &window, ResourceManager<sf::Texture> &textureAllocator)
         : Scene(window), textureAllocator(textureAllocator) {}
@@ -39,6 +40,7 @@ void SceneGame::draw() {
     objects.draw(window);
     window.setCenter(player->transform->getPosition() +
                      sf::Vector2f(GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y) / 2.f);
+    Debug::draw(window);
 }
 
 void SceneGame::lateUpdate(const float &dt) {
