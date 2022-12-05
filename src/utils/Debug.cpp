@@ -22,7 +22,7 @@ void Debug::drawRect(const sf::FloatRect &rect, sf::Color color) {
     sf::RectangleShape shape(size);
     shape.setPosition(pos);
     shape.setOutlineColor(color);
-    shape.setOutlineThickness(3.f);
+    shape.setOutlineThickness(1.f);
     shape.setFillColor(sf::Color::Transparent);
     rects.push_back(shape);
 }

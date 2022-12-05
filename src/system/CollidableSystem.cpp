@@ -49,8 +49,8 @@ void CollidableSystem::resolve() {
             Manifold m = collidable->intersects(collision);
 
             if (m.colliding) {
-                Debug::drawRect(collision->getCollidable(), sf::Color::Red);
                 Debug::drawRect(collidable->getCollidable(), sf::Color::Red);
+                Debug::drawRect(collision->getCollidable(), sf::Color::Red);
 
                 if (collision->owner->transform->isStatic()) {
                     collidable->resolveOverlap(m);

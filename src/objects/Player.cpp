@@ -17,11 +17,11 @@ Player::Player(ResourceManager<sf::Texture> &textureAllocator, Input &input) : O
     animation->load("assets/character/animations.json");
 
     auto collider = this->addComponent<BoxColliderComponent>();
-    float offset_x = 3;
-    float offset_y = 4;
+    float offset_x = 1.5;
+    float offset_y = 3;
 
     collider->setOffset(offset_x, offset_y);
-    collider->setSize(GraphcisConsts::PLAYER_DIM.x - (2 * offset_x), GraphcisConsts::PLAYER_DIM.y - offset_y);
+    collider->setSize(GraphcisConsts::PLAYER_DIM.x - 6, GraphcisConsts::PLAYER_DIM.y - 3);
 
     this->transform->setPosition(-8 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
 }
