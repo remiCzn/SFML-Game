@@ -68,16 +68,16 @@ const sf::FloatRect &BoxColliderComponent::getCollidable() {
 void BoxColliderComponent::setPosition() {
     const sf::Vector2f &pos = owner->transform->getPosition();
 
-    AABB.left = pos.x - (AABB.width / 2) + offset.x;
-    AABB.top = pos.y - (AABB.height / 2) + offset.y;
+    AABB.left = pos.x + offset.x;
+    AABB.top = pos.y + offset.y;
 }
 
 sf::FloatRect BoxColliderComponent::getPreviousFrameCollidable() const {
     const sf::Vector2f &pos = owner->transform->getPreviousFramePosition();
 
     sf::FloatRect prevAABB;
-    prevAABB.left = pos.x - (AABB.width / 2) + offset.x;
-    prevAABB.top = pos.y - (AABB.height / 2) + offset.y;
+    prevAABB.left = pos.x + offset.x;
+    prevAABB.top = pos.y + offset.y;
 
     return prevAABB;
 }

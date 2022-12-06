@@ -17,8 +17,16 @@ void SceneGame::onCreate() {
     player = std::make_shared<Player>(textureAllocator, input);
     std::shared_ptr<Object> tilemap = std::make_shared<Tilemap>();
     auto chest = std::make_shared<Chest>(textureAllocator);
+    auto chest2 = std::make_shared<Chest>(textureAllocator);
+    auto chest3 = std::make_shared<Chest>(textureAllocator);
+    chest2->transform->setPosition(-5 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
+    chest->transform->setPosition(-6 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
+    chest3->transform->setPosition(-4 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
+
     objects.add(tilemap);
     objects.add(chest);
+    objects.add(chest2);
+    objects.add(chest3);
     objects.add(player);
 }
 

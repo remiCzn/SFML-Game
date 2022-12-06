@@ -11,9 +11,8 @@ Chest::Chest(ResourceManager<sf::Texture> &textureAllocator) : Object() {
 
     auto collider = this->addComponent<BoxColliderComponent>();
     collider->setSize(16, 20);
-    collider->setOffset(0, 0);
+    collider->setOffset(0, 5);
 
-    this->transform->setPosition(-6 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
     this->transform->setStatic(true);
 }
 

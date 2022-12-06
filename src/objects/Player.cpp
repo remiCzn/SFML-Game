@@ -7,7 +7,7 @@
 Player::Player(ResourceManager<sf::Texture> &textureAllocator, Input &input) : Object() {
     auto sprite = this->addComponent<SpriteComponent>();
     sprite->setTextureAllocator(&textureAllocator);
-    sprite->load("assets/character/chara1.png");
+    sprite->load("assets/character/chara1_2.png");
     sprite->setTextureRect(sf::IntRect(0, 0, GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y));
 
     auto movement = this->addComponent<InputComponent>();
@@ -17,11 +17,9 @@ Player::Player(ResourceManager<sf::Texture> &textureAllocator, Input &input) : O
     animation->load("assets/character/animations.json");
 
     auto collider = this->addComponent<BoxColliderComponent>();
-    float offset_x = 1.5;
-    float offset_y = 3;
 
-    collider->setOffset(offset_x, offset_y);
-    collider->setSize(GraphcisConsts::PLAYER_DIM.x - 6, GraphcisConsts::PLAYER_DIM.y - 3);
+    collider->setOffset(0, 8);
+    collider->setSize(GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y - 9);
 
     this->transform->setPosition(-8 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
 }

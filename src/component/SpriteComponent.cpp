@@ -23,10 +23,9 @@ void SpriteComponent::setTextureRect(sf::IntRect textureRect) {
 void SpriteComponent::lateUpdate(const float &dt) {
     sf::Vector2f pos = owner->transform->getPosition();
     const sf::IntRect &spriteBounds = sprite.getTextureRect();
-    const sf::Vector2f &spriteScale = sprite.getScale();
     sprite.setPosition(
-            pos.x - (fabs(spriteBounds.width) / 2 * spriteScale.x),
-            pos.y - (fabs(spriteBounds.height) / 2 * spriteScale.y)
+            pos.x,
+            pos.y
     );
 }
 
