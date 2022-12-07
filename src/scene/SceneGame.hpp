@@ -37,7 +37,7 @@ private:
     Window &window;
     std::shared_ptr<Object> player;
 
-    Input input;
+    std::shared_ptr<Input> input;
     ResourceManager<sf::Texture> &textureAllocator;
     ObjectCollection objects;
 

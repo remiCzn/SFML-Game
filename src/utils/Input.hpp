@@ -2,6 +2,7 @@
 #define GAME_INPUT_HPP
 
 #include "defines.hpp"
+#include "Window.hpp"
 
 class Input {
 public:
@@ -14,6 +15,8 @@ public:
         Esc = 5
     };
 
+    explicit Input(Window &window);
+
     void update();
 
     bool isKeyPressed(Key key);
@@ -25,7 +28,7 @@ public:
 private:
     std::unordered_map<int, bool> thisFrameKeys;
     std::unordered_map<int, bool> lastFrameKeys;
-
+    Window &window;
 };
 
 

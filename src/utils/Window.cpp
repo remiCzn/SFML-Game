@@ -55,3 +55,7 @@ void Window::setScale(float scale) {
 void Window::setCenter(sf::Vector2f position) {
     this->view->setCenter(sf::Vector2f(floor(position.x), floor(position.y)));
 }
+
+bool Window::getFocus() const {
+    return this->window.hasFocus();
+}

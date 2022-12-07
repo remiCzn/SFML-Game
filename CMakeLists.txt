@@ -17,8 +17,9 @@ add_executable(${GAME_NAME} ${all_src})
 
 find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
 find_package(jsoncpp REQUIRED)
+find_package(sioclient CONFIG REQUIRED)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 file(COPY assets/ DESTINATION ${CMAKE_BINARY_DIR}/assets)
-target_link_libraries(${GAME_NAME} sfml-system sfml-window sfml-graphics jsoncpp_lib)
+target_link_libraries(${GAME_NAME} sfml-system sfml-window sfml-graphics jsoncpp_lib sioclient::sioclient sioclient::sioclient_tls)

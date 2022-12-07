@@ -16,7 +16,7 @@ public:
 
     void start();
 
-    void update(const float &dt);
+    virtual void update(const float &dt);
 
     void lateUpdate(const float &dt);
 

@@ -27,9 +27,12 @@ public:
 
     bool isOpen() const;
 
+    bool getFocus() const;
+
 private:
     sf::RenderWindow window;
     std::shared_ptr<sf::View> view;
+    bool focus;
 };
 
 

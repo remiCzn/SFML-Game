@@ -13,7 +13,7 @@ public:
 
     void awake() override;
 
-    void setInput(Input *input);
+    void setInput(std::shared_ptr<Input> input);
 
     void setMovementSpeed(int moveSpeed);
 
@@ -22,7 +22,7 @@ public:
 private:
     int moveSpeed;
     std::shared_ptr<AnimationComponent> animation;
-    Input *input;
+    std::shared_ptr<Input> input;
 };
 
 

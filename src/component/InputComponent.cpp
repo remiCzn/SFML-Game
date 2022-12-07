@@ -4,8 +4,8 @@ InputComponent::InputComponent(Object *owner) : Component(owner), moveSpeed(100)
 
 }
 
-void InputComponent::setInput(Input *_input) {
-    this->input = _input;
+void InputComponent::setInput(std::shared_ptr<Input> input) {
+    this->input = input;
 }
 
 void InputComponent::setMovementSpeed(int _moveSpeed) {

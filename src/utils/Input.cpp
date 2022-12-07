@@ -14,13 +14,16 @@ void Input::update() {
 }
 
 bool Input::isKeyUp(Input::Key key) {
-    return lastFrameKeys[(int) key] && !thisFrameKeys[(int) key];
+    return this->window.getFocus() && lastFrameKeys[(int) key] && !thisFrameKeys[(int) key];
 }
 
 bool Input::isKeyPressed(Input::Key key) {
-    return thisFrameKeys[(int) key];
+    return this->window.getFocus() && thisFrameKeys[(int) key];
 }
 
 bool Input::isKeyDown(Input::Key key) {
-    return !lastFrameKeys[(int) key] && thisFrameKeys[(int) key];
+    return this->window.getFocus() && !lastFrameKeys[(int) key] && thisFrameKeys[(int) key];
+}
+
+Input::Input(Window &window) : window(window) {
 }

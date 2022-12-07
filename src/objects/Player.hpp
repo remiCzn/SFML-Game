@@ -5,10 +5,16 @@
 #include "Object.hpp"
 #include "../utils/ResourceManager.hpp"
 #include "../utils/Input.hpp"
+#include "../utils/SocketClient.hpp"
 
 class Player : public Object {
 public:
-    Player(ResourceManager<sf::Texture> &textureAllocator, Input &input);
+    Player(ResourceManager<sf::Texture> &textureAllocator, std::shared_ptr<Input> input);
+
+    void update(const float &dt) override;
+
+private:
+    SocketClient socket;
 };
 
 
