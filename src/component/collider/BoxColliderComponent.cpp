@@ -32,8 +32,8 @@ void BoxColliderComponent::resolveOverlap(const Manifold &m) {
     const sf::FloatRect *rect2 = m.other;
 
     float resolve;
-    float xDiff = (rect1.left + (rect1.width * 0.5f) - (rect2->left + (rect2->width * 0.5f)));
-    float yDiff = (rect1.top + (rect1.height * 0.5f) - (rect2->top + (rect2->height * 0.5f)));
+    float xDiff = (rect1.left - rect2->left);
+    float yDiff = (rect1.top - rect2->top);
 
     if (fabs(xDiff) > fabs(yDiff)) {
         if (xDiff > 0) {
@@ -81,6 +81,7 @@ sf::FloatRect BoxColliderComponent::getPreviousFrameCollidable() const {
 
     return prevAABB;
 }
+
 
 void BoxColliderComponent::setOffset(const sf::Vector2f &_offset) {
     this->offset = _offset;

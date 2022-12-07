@@ -11,7 +11,7 @@ void Debug::draw(Window &window) {
 
     for (auto &l: lines) {
         sf::Vertex line[2] = {l.at(0), l.at(1)};
-        window.draw(line, 2, sf::Lines);
+        window.draw(line, 1, sf::Lines);
     }
     lines.clear();
 }
@@ -22,7 +22,7 @@ void Debug::drawRect(const sf::FloatRect &rect, sf::Color color) {
     sf::RectangleShape shape(size);
     shape.setPosition(pos);
     shape.setOutlineColor(color);
-    shape.setOutlineThickness(1.f);
+    shape.setOutlineThickness(0.3f);
     shape.setFillColor(sf::Color::Transparent);
     rects.push_back(shape);
 }
