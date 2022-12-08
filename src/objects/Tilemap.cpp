@@ -10,4 +10,13 @@ Tilemap::Tilemap() : Object() {
     this->getComponent<TilemapComponent>()->load("assets/maps/test_map.tmj");
     this->getComponent<TilemapDrawableComponent>()->load("assets/tilesheet/main_sheet.tsj",
                                                          "assets/tilesheet/main_sheet.png");
+    this->getComponent<TilemapColliderComponent>()->load();
+    this->transform->setStatic(true);
 }
+
+void Tilemap::draw(Window &window) {
+    Object::draw(window);
+    this->getComponent<TilemapColliderComponent>()->drawDebug();
+}
+
+

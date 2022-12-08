@@ -5,7 +5,7 @@
 #include "../objects/Object.hpp"
 #include "../component/collider/BoxColliderComponent.hpp"
 
-using Colliders = std::vector<std::shared_ptr<BoxColliderComponent>>;
+using Colliders = std::vector<std::shared_ptr<ColliderComponent>>;
 
 class CollidableSystem {
 public:
@@ -18,7 +18,7 @@ public:
     void update();
 
 private:
-    std::vector<std::shared_ptr<BoxColliderComponent>> collidables;
+    Colliders collidables;
 };
 
 

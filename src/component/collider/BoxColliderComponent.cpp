@@ -1,4 +1,5 @@
 #include "BoxColliderComponent.hpp"
+#include "../tilemap/TilemapColliderComponent.hpp"
 
 BoxColliderComponent::BoxColliderComponent(Object *owner) : ColliderComponent(owner),
                                                             offset(sf::Vector2f(0.f, 0.f)) {}
@@ -13,7 +14,16 @@ bool BoxColliderComponent::intersects(std::shared_ptr<ColliderComponent> other) 
 
         if (rect1.intersects(rect2)) {
             return true;
+        } else {
+            return false;
         }
+    }
+
+    std::shared_ptr<TilemapColliderComponent> tilemapCollider = std::dynamic_pointer_cast<TilemapColliderComponent>(
+            other);
+    if (tilemapCollider) {
+        const sf::FloatRect &rect1 = getCollidable();
+        return tilemapCollider->intersects(rect1);
     }
 
     return false;

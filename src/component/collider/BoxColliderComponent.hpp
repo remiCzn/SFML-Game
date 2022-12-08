@@ -19,7 +19,7 @@ public:
 
     void setCollidable(const sf::FloatRect &rect);
 
-    const sf::FloatRect &getCollidable();
+    const sf::FloatRect &getCollidable() override;
 
     void setOffset(const sf::Vector2f &_offset);
 

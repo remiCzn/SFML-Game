@@ -5,7 +5,7 @@ CollidableSystem::CollidableSystem() = default;
 
 void CollidableSystem::add(std::vector<std::shared_ptr<Object>> &objects) {
     for (auto &o: objects) {
-        auto collider = o->getComponent<BoxColliderComponent>();
+        auto collider = o->getComponent<ColliderComponent>();
         if (collider) {
             this->collidables.push_back(collider);
         }

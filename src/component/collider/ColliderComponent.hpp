@@ -12,6 +12,9 @@ public:
     ~ColliderComponent();
 
     virtual bool intersects(std::shared_ptr<ColliderComponent> other) = 0;
+
+    virtual const sf::FloatRect &getCollidable() = 0;
+
 };
 
 

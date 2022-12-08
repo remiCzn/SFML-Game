@@ -19,8 +19,8 @@ Player::Player(ResourceManager<sf::Texture> &textureAllocator, Input &input) : O
 
     auto collider = this->addComponent<BoxColliderComponent>();
 
-    collider->setOffset(0, 8);
-    collider->setSize(GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y - 9);
+    collider->setOffset(3, 8);
+    collider->setSize(GraphcisConsts::PLAYER_DIM.x - 6, GraphcisConsts::PLAYER_DIM.y - 9);
 
     this->transform->setPosition(-8 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
 }
