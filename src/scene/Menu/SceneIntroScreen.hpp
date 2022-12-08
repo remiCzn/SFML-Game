@@ -2,9 +2,9 @@
 #define GAME_SCENEINTROSCREEN_HPP
 
 
-#include "SceneStateMachine.hpp"
-#include "../utils/ResourceManager.hpp"
-#include "../UI/Text.hpp"
+#include "../SceneStateMachine.hpp"
+#include "../../utils/ResourceManager.hpp"
+#include "../../UI/Text.hpp"
 
 class SceneIntroScreen : public Scene {
 public:

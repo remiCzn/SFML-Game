@@ -13,6 +13,19 @@ enum class Key {
     Debug = 6
 };
 
+enum JoystickButton {
+    A = 0,
+    B,
+    X,
+    Y,
+    L,
+    R,
+    start,
+    select,
+    LAxis,
+    RAxis
+};
+
 class Input {
 public:
 
