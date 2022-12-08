@@ -5,54 +5,18 @@ BoxColliderComponent::BoxColliderComponent(Object *owner) : ColliderComponent(ow
 
 BoxColliderComponent::~BoxColliderComponent() = default;
 
-Manifold BoxColliderComponent::intersects(std::shared_ptr<ColliderComponent> other) {
-    Manifold m;
-    m.colliding = false;
-
+bool BoxColliderComponent::intersects(std::shared_ptr<ColliderComponent> other) {
     std::shared_ptr<BoxColliderComponent> boxCollider = std::dynamic_pointer_cast<BoxColliderComponent>(other);
     if (boxCollider) {
         const sf::FloatRect &rect1 = getCollidable();
         const sf::FloatRect &rect2 = boxCollider->getCollidable();
 
         if (rect1.intersects(rect2)) {
-            m.colliding = true;
-            m.other = &rect2;
+            return true;
         }
     }
 
-    return m;
-}
-
-void BoxColliderComponent::resolveOverlap(const Manifold &m) {
-    auto transform = this->owner->transform;
-
-    if (transform->isStatic()) { return; }
-
-    const sf::FloatRect &rect1 = getCollidable();
-    const sf::FloatRect *rect2 = m.other;
-
-    float resolve;
-    float xDiff = (rect1.left - rect2->left);
-    float yDiff = (rect1.top - rect2->top);
-
-    if (fabs(xDiff) > fabs(yDiff)) {
-        if (xDiff > 0) {
-            resolve = (rect2->left + rect2->width) - rect1.left;
-        } else {
-            resolve = -((rect1.left + rect1.width) - rect2->left);
-        }
-
-        transform->translate(resolve, 0);
-    } else {
-        if (xDiff > 0) {
-            resolve = (rect2->top + rect2->height) - rect1.top;
-        } else {
-            resolve = -((rect1.top + rect1.height) - rect2->top);
-        }
-
-        transform->translate(0, resolve);
-    }
-
+    return false;
 }
 
 void BoxColliderComponent::setCollidable(const sf::FloatRect &rect) {
@@ -66,22 +30,11 @@ const sf::FloatRect &BoxColliderComponent::getCollidable() {
 }
 
 void BoxColliderComponent::setPosition() {
-    const sf::Vector2f &pos = owner->transform->getPosition();
+    const sf::Vector2f &pos = owner->transform->getNextFramePosition();
 
     AABB.left = pos.x + offset.x;
     AABB.top = pos.y + offset.y;
 }
-
-sf::FloatRect BoxColliderComponent::getPreviousFrameCollidable() const {
-    const sf::Vector2f &pos = owner->transform->getPreviousFramePosition();
-
-    sf::FloatRect prevAABB;
-    prevAABB.left = pos.x + offset.x;
-    prevAABB.top = pos.y + offset.y;
-
-    return prevAABB;
-}
-
 
 void BoxColliderComponent::setOffset(const sf::Vector2f &_offset) {
     this->offset = _offset;

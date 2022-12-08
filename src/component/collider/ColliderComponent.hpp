@@ -5,21 +5,13 @@
 #include "../Component.hpp"
 #include "../../objects/Object.hpp"
 
-struct Manifold {
-    bool colliding = false;
-    const sf::FloatRect *other;
-};
-
 class ColliderComponent : public Component {
 public:
     explicit ColliderComponent(Object *owner);
 
     ~ColliderComponent();
 
-    virtual Manifold intersects(std::shared_ptr<ColliderComponent> other) = 0;
-
-    virtual void resolveOverlap(const Manifold &m) = 0;
-
+    virtual bool intersects(std::shared_ptr<ColliderComponent> other) = 0;
 };
 
 

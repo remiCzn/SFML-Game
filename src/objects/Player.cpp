@@ -3,6 +3,7 @@
 #include "constants.hpp"
 #include "../component/InputComponent.hpp"
 #include "../component/collider/BoxColliderComponent.hpp"
+#include "../utils/Debug.hpp"
 
 Player::Player(ResourceManager<sf::Texture> &textureAllocator, Input &input) : Object() {
     auto sprite = this->addComponent<SpriteComponent>();
@@ -22,4 +23,9 @@ Player::Player(ResourceManager<sf::Texture> &textureAllocator, Input &input) : O
     collider->setSize(GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y - 9);
 
     this->transform->setPosition(-8 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
+}
+
+void Player::draw(Window &window) {
+    Object::draw(window);
+    Debug::drawRect(this->getComponent<BoxColliderComponent>()->getCollidable(), sf::Color::Red);
 }

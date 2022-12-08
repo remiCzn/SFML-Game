@@ -27,15 +27,21 @@ public:
 
     const sf::Vector2f &getPosition() const;
 
-    const sf::Vector2f &getPreviousFramePosition() const;
-    
+    const sf::Vector2f &getNextFramePosition() const;
+
     void setStatic(bool isStatic);
 
     bool isStatic() const;
 
+    void stopX();
+
+    void stopY();
+
+
 private:
     sf::Vector2f position;
-    sf::Vector2f previousFramePosition;
+    sf::Vector2f nextFramePosition;
+
     bool _isStatic;
 };
 

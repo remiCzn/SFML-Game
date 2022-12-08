@@ -9,8 +9,6 @@ void ObjectCollection::update(const float &dt) {
         o->update(dt);
     }
     collidables.update();
-    collidables.updatePosition(objects);
-    collidables.resolve();
 }
 
 void ObjectCollection::lateUpdate(const float &dt) {

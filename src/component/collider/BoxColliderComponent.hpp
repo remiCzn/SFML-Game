@@ -15,15 +15,11 @@ public:
 
     ~BoxColliderComponent();
 
-    Manifold intersects(std::shared_ptr<ColliderComponent> other) override;
-
-    void resolveOverlap(const Manifold &m) override;
+    bool intersects(std::shared_ptr<ColliderComponent> other) override;
 
     void setCollidable(const sf::FloatRect &rect);
 
     const sf::FloatRect &getCollidable();
-
-    sf::FloatRect getPreviousFrameCollidable() const;
 
     void setOffset(const sf::Vector2f &_offset);
 

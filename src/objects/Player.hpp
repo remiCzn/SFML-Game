@@ -9,6 +9,8 @@
 class Player : public Object {
 public:
     Player(ResourceManager<sf::Texture> &textureAllocator, Input &input);
+
+    void draw(Window &window) override;
 };
 
 
