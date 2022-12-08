@@ -1,33 +1,39 @@
 #include "Input.hpp"
 
+std::unordered_set<Key> Input::thisFrameKeys = {};
+std::unordered_set<Key> Input::lastFrameKeys = {};
+
 void Input::update() {
-    this->lastFrameKeys = this->thisFrameKeys;
-    this->thisFrameKeys = std::unordered_set<Key>();
+    lastFrameKeys = thisFrameKeys;
+    thisFrameKeys = std::unordered_set<Key>();
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-        this->thisFrameKeys.insert(Key::Left);
+        thisFrameKeys.insert(Key::Left);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-        this->thisFrameKeys.insert(Key::Up);
+        thisFrameKeys.insert(Key::Up);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        this->thisFrameKeys.insert(Key::Down);
+        thisFrameKeys.insert(Key::Down);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        this->thisFrameKeys.insert(Key::Right);
+        thisFrameKeys.insert(Key::Right);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-        this->thisFrameKeys.insert(Key::Esc);
+        thisFrameKeys.insert(Key::Esc);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3)) {
+        thisFrameKeys.insert(Key::Debug);
     }
 }
 
-bool Input::isKeyUp(Input::Key key) {
+bool Input::isKeyUp(Key key) {
     return lastFrameKeys.contains(key) && !thisFrameKeys.contains(key);
 }
 
-bool Input::isKeyPressed(Input::Key key) {
+bool Input::isKeyPressed(Key key) {
     return thisFrameKeys.contains(key);
 }
 
-bool Input::isKeyDown(Input::Key key) {
+bool Input::isKeyDown(Key key) {
     return !lastFrameKeys.contains(key) && thisFrameKeys.contains(key);
 }

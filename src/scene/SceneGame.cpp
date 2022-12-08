@@ -14,7 +14,7 @@ void SceneGame::onDeactivate() {
 }
 
 void SceneGame::onCreate() {
-    player = std::make_shared<Player>(textureAllocator, input);
+    player = std::make_shared<Player>(textureAllocator);
     std::shared_ptr<Object> tilemap = std::make_shared<Tilemap>();
     auto chest = std::make_shared<Chest>(textureAllocator);
     auto chest2 = std::make_shared<Chest>(textureAllocator);
@@ -32,10 +32,6 @@ void SceneGame::onCreate() {
 
 void SceneGame::onDestroy() {
 
-}
-
-void SceneGame::updateInput() {
-    this->input.update();
 }
 
 void SceneGame::update(const float &dt) {

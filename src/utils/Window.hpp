@@ -2,6 +2,9 @@
 #define GAME_WINDOW_HPP
 
 #include "defines.hpp"
+#include "Debug.hpp"
+#include "Input.hpp"
+#include <cmath>
 
 class Window {
 public:

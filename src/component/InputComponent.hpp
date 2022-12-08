@@ -13,8 +13,6 @@ public:
 
     void awake() override;
 
-    void setInput(Input *input);
-
     void setMovementSpeed(int moveSpeed);
 
     void update(const float &dt) override;
@@ -22,7 +20,6 @@ public:
 private:
     int moveSpeed;
     std::shared_ptr<AnimationComponent> animation;
-    Input *input;
 };
 
 

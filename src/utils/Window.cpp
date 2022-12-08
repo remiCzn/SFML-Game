@@ -1,5 +1,4 @@
 #include "Window.hpp"
-#include <cmath>
 
 Window::Window(const std::string &windowname)
         : window(sf::VideoMode(800, 600), windowname) {
@@ -16,6 +15,9 @@ void Window::update() {
         if (event.type == sf::Event::Closed) {
             window.close();
         }
+    }
+    if (Input::isKeyDown(Key::Debug)) {
+        Debug::switchDebugMode();
     }
 }
 

@@ -3,9 +3,15 @@
 
 #include "defines.hpp"
 #include "Window.hpp"
+#include "../UI/Text.hpp"
+
+class Window;
 
 class Debug {
 public:
+
+    static void switchDebugMode();
+
     static void draw(Window &window);
 
     static void drawRect(const sf::FloatRect &rect, sf::Color color = sf::Color::White);
@@ -21,6 +27,7 @@ public:
 private:
     static std::vector<std::array<sf::Vertex, 2>> lines;
     static std::vector<sf::RectangleShape> rects;
+    static bool debugMode;
 };
 
 

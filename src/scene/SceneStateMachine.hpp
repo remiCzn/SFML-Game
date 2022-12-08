@@ -9,8 +9,6 @@ class SceneStateMachine {
 public:
     SceneStateMachine();
 
-    void updateInput();
-
     void update(const float &dt);
 
     void lateUpdate(const float &dt);

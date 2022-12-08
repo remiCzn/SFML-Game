@@ -16,8 +16,6 @@ public:
 
     virtual void onDeactivate() {};
 
-    virtual void updateInput() {};
-
     virtual void update(const float &dt) {};
 
     virtual void lateUpdate(const float &dt) {};

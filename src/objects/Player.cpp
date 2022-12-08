@@ -5,14 +5,13 @@
 #include "../component/collider/BoxColliderComponent.hpp"
 #include "../utils/Debug.hpp"
 
-Player::Player(ResourceManager<sf::Texture> &textureAllocator, Input &input) : Object() {
+Player::Player(ResourceManager<sf::Texture> &textureAllocator) : Object() {
     auto sprite = this->addComponent<SpriteComponent>();
     sprite->setTextureAllocator(&textureAllocator);
     sprite->load("assets/character/chara1_2.png");
     sprite->setTextureRect(sf::IntRect(0, 0, GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y));
 
     auto movement = this->addComponent<InputComponent>();
-    movement->setInput(&input);
 
     auto animation = this->addComponent<AnimationComponent>();
     animation->load("assets/character/animations.json");
