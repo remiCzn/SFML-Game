@@ -25,8 +25,6 @@ public:
 
     void onDeactivate() override;
 
-    void updateInput() override;
-
     void update(const float &dt) override;
 
     void lateUpdate(const float &dt) override;
@@ -36,7 +34,6 @@ public:
 private:
     std::shared_ptr<Object> player;
 
-    Input input;
     ResourceManager<sf::Texture> &textureAllocator;
     ObjectCollection objects;
 

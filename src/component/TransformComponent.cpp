@@ -1,12 +1,14 @@
 #include "TransformComponent.hpp"
 
-TransformComponent::TransformComponent(Object *owner) : Component(owner), position(0, 0), _isStatic(false) {
-
-}
+TransformComponent::TransformComponent(Object *owner)
+        : Component(owner),
+          position(0, 0),
+          _isStatic(false),
+          nextFramePosition(0, 0) {}
 
 void TransformComponent::setPosition(float x, float y) {
-    position.x = round(x);
-    position.y = round(y);
+    nextFramePosition.x = round(x);
+    nextFramePosition.y = round(y);
 }
 
 void TransformComponent::setPosition(const sf::Vector2f &pos) {
@@ -23,19 +25,19 @@ void TransformComponent::translate(sf::Vector2f pos) {
 }
 
 void TransformComponent::setX(float x) {
-    position.x = round(x);
+    nextFramePosition.x = round(x);
 }
 
 void TransformComponent::setY(float y) {
-    position.y = round(y);
+    nextFramePosition.y = round(y);
 }
 
 void TransformComponent::translateX(float x) {
-    position.x += round(x);
+    nextFramePosition.x += round(x);
 }
 
 void TransformComponent::translateY(float y) {
-    position.y += round(y);
+    nextFramePosition.y += round(y);
 }
 
 const sf::Vector2f &TransformComponent::getPosition() const {
@@ -48,4 +50,20 @@ void TransformComponent::setStatic(bool isStatic) {
 
 bool TransformComponent::isStatic() const {
     return this->_isStatic;
+}
+
+void TransformComponent::lateUpdate(const float &dt) {
+    position = nextFramePosition;
+}
+
+const sf::Vector2f &TransformComponent::getNextFramePosition() const {
+    return this->nextFramePosition;
+}
+
+void TransformComponent::stopX() {
+    this->nextFramePosition.x = this->position.x;
+}
+
+void TransformComponent::stopY() {
+    this->nextFramePosition.y = this->position.y;
 }

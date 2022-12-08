@@ -42,7 +42,3 @@ bool Game::isRunning() const {
 void Game::updateDt() {
     this->dt = clock.restart().asSeconds();
 }
-
-void Game::updateInput() {
-    sceneStateMachine.updateInput();
-}

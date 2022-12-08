@@ -1,5 +1,4 @@
 #include "Window.hpp"
-#include <cmath>
 
 Window::Window(const std::string &windowname)
         : window(sf::VideoMode(800, 600), windowname) {
@@ -26,6 +25,9 @@ void Window::update() {
         if (event.type == sf::Event::JoystickConnected) {
             std::cout << event.joystickConnect.joystickId;
         }*/
+    }
+    if (Input::isKeyDown(Key::Debug)) {
+        Debug::switchDebugMode();
     }
 }
 
@@ -74,4 +76,8 @@ tgui::Gui &Window::gui() {
 
 sf::Window &Window::get() {
     return this->window;
+}
+
+void Window::draw(const sf::Vertex *vertices, std::size_t vertexCount, sf::PrimitiveType type) {
+    window.draw(vertices, vertexCount, type);
 }

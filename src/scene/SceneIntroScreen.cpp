@@ -5,7 +5,7 @@ SceneIntroScreen::SceneIntroScreen(SceneStateMachine &sceneStateMachine, Window 
           stateMachine(
                   sceneStateMachine),
           currentTime(0),
-          showForSeconds(2),
+          showForSeconds(0.3),
           nextState(0) {}
 
 void SceneIntroScreen::onCreate() {

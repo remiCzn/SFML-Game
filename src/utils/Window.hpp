@@ -2,6 +2,9 @@
 #define GAME_WINDOW_HPP
 
 #include "defines.hpp"
+#include "Debug.hpp"
+#include "Input.hpp"
+#include <cmath>
 
 class Window {
 public:
@@ -14,6 +17,8 @@ public:
     void draw(const sf::Drawable &drawable);
 
     void draw(const sf::Drawable &drawable, const sf::RenderStates &states);
+
+    void draw(const sf::Vertex *vertices, std::size_t vertexCount, sf::PrimitiveType type);
 
     void endDraw();
 
@@ -29,7 +34,7 @@ public:
 
     tgui::Gui &gui();
 
-    sf::Window & get();
+    sf::Window &get();
 
 private:
     sf::RenderWindow window;

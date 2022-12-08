@@ -3,6 +3,16 @@
 
 #include "defines.hpp"
 
+enum class Key {
+    None = 0,
+    Left = 1,
+    Right = 2,
+    Up = 3,
+    Down = 4,
+    Esc = 5,
+    Debug = 6
+};
+
 enum JoystickButton {
     A = 0,
     B,
@@ -18,27 +28,18 @@ enum JoystickButton {
 
 class Input {
 public:
-    enum class Key {
-        None = 0,
-        Left = 1,
-        Right = 2,
-        Up = 3,
-        Down = 4,
-        Esc = 5
-    };
 
-    void update();
+    static void update();
 
-    bool isKeyPressed(Key key);
+    static bool isKeyPressed(Key key);
 
-    bool isKeyDown(Key key);
+    static bool isKeyDown(Key key);
 
-    bool isKeyUp(Key key);
+    static bool isKeyUp(Key key);
 
 private:
-    std::unordered_map<int, bool> thisFrameKeys;
-    std::unordered_map<int, bool> lastFrameKeys;
-
+    static std::unordered_set<Key> thisFrameKeys;
+    static std::unordered_set<Key> lastFrameKeys;
 };
 
 
