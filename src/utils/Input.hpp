@@ -3,6 +3,19 @@
 
 #include "defines.hpp"
 
+enum JoystickButton {
+    A = 0,
+    B,
+    X,
+    Y,
+    L,
+    R,
+    start,
+    select,
+    LAxis,
+    RAxis
+};
+
 class Input {
 public:
     enum class Key {

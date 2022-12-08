@@ -16,6 +16,16 @@ void Window::update() {
         if (event.type == sf::Event::Closed) {
             window.close();
         }
+        /*if (event.type == sf::Event::JoystickButtonPressed) {
+            std::cout << event.joystickButton.joystickId << ": " << event.joystickButton.button << std::endl;
+        }
+        if (event.type == sf::Event::JoystickMoved) {
+            std::cout << event.joystickMove.joystickId << ": " << event.joystickMove.axis << "/"
+                      << event.joystickMove.position << std::endl;
+        }
+        if (event.type == sf::Event::JoystickConnected) {
+            std::cout << event.joystickConnect.joystickId;
+        }*/
     }
 }
 
@@ -62,6 +72,6 @@ tgui::Gui &Window::gui() {
     return this->tgui;
 }
 
-sf::Window & Window::get() {
+sf::Window &Window::get() {
     return this->window;
 }
