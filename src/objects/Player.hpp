@@ -8,7 +8,7 @@
 
 class Player : public Object {
 public:
-    Player(ResourceManager<sf::Texture> &textureAllocator, Input &input);
+    Player(ResourceManager<sf::Texture> &textureAllocator);
 };
 
 

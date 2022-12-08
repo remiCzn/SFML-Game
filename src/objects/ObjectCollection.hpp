@@ -3,6 +3,7 @@
 
 #include "Object.hpp"
 #include "../system/DrawableSystem.hpp"
+#include "../system/CollidableSystem.hpp"
 
 class ObjectCollection {
 public:
@@ -23,6 +24,7 @@ private:
     std::vector<std::shared_ptr<Object>> newObjects;
 
     DrawableSystem drawables;
+    CollidableSystem collidables;
 };
 
 

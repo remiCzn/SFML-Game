@@ -7,6 +7,8 @@
 class Tilemap : public Object {
 public:
     Tilemap();
+
+    void draw(Window &window) override;
 };
 
 

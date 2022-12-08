@@ -4,7 +4,7 @@ int main() {
     Game game;
 
     while (game.isRunning()) {
-        game.updateInput();
+        Input::update();
         game.update();
         game.lateUpdate();
         game.draw();

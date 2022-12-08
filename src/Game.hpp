@@ -12,8 +12,6 @@ class Game {
 public:
     Game();
 
-    void updateInput();
-
     void update();
 
     void lateUpdate();
@@ -31,7 +29,7 @@ private:
     float dt;
 
     SceneStateMachine sceneStateMachine;
-    ResourceManager <sf::Texture> textureAllocator;
+    ResourceManager<sf::Texture> textureAllocator;
 };
 
 

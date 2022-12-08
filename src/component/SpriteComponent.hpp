@@ -5,10 +5,11 @@
 #include "Component.hpp"
 #include "../utils/ResourceManager.hpp"
 #include "DrawableComponent.hpp"
+#include <cmath>
 
 class SpriteComponent : public Component, public DrawableComponent {
 public:
-    SpriteComponent(Object *owner);
+    explicit SpriteComponent(Object *owner);
 
     void setTextureAllocator(ResourceManager<sf::Texture> *textureAllocator);
 
