@@ -15,7 +15,8 @@ void CollidableSystem::add(std::vector<std::shared_ptr<Object>> &objects) {
 void CollidableSystem::processRemovals() {
     auto itr = collidables.begin();
     while (itr != collidables.end()) {
-        if ((*itr)->owner->isQueuedForRemoval()) {
+        auto obj = *itr;
+        if (obj->owner->isQueuedForRemoval()) {
             itr = collidables.erase(itr);
         } else {
             ++itr;
@@ -25,6 +26,7 @@ void CollidableSystem::processRemovals() {
 
 void CollidableSystem::update() {
     for (auto &collidable: collidables) {
+        Debug::drawRect(collidable->getCollidable(), sf::Color::Red);
         if (collidable->owner->transform->isStatic()) {
             continue;
         }

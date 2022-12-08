@@ -24,8 +24,3 @@ Player::Player(ResourceManager<sf::Texture> &textureAllocator, Input &input) : O
 
     this->transform->setPosition(-8 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
 }
-
-void Player::draw(Window &window) {
-    Object::draw(window);
-    Debug::drawRect(this->getComponent<BoxColliderComponent>()->getCollidable(), sf::Color::Red);
-}
