@@ -7,6 +7,8 @@ class TransformComponent : public Component {
 public:
     TransformComponent(Object *owner);
 
+    void lateUpdate(const float &dt) override;
+
     void setPosition(float x, float y);
 
     void setPosition(const sf::Vector2f &pos);
@@ -25,12 +27,21 @@ public:
 
     const sf::Vector2f &getPosition() const;
 
+    const sf::Vector2f &getNextFramePosition() const;
+
     void setStatic(bool isStatic);
 
     bool isStatic() const;
 
+    void stopX();
+
+    void stopY();
+
+
 private:
     sf::Vector2f position;
+    sf::Vector2f nextFramePosition;
+
     bool _isStatic;
 };
 

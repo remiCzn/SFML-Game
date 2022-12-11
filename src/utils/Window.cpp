@@ -1,19 +1,33 @@
 #include "Window.hpp"
-#include <math.h>
 
 Window::Window(const std::string &windowname)
         : window(sf::VideoMode(800, 600), windowname) {
     this->view = std::make_shared<sf::View>(this->window.getDefaultView());
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(60);
+    tgui.setTarget(window);
 }
 
 void Window::update() {
     sf::Event event;
     if (window.pollEvent(event)) {
+        tgui.handleEvent(event);
         if (event.type == sf::Event::Closed) {
             window.close();
         }
+        /*if (event.type == sf::Event::JoystickButtonPressed) {
+            std::cout << event.joystickButton.joystickId << ": " << event.joystickButton.button << std::endl;
+        }
+        if (event.type == sf::Event::JoystickMoved) {
+            std::cout << event.joystickMove.joystickId << ": " << event.joystickMove.axis << "/"
+                      << event.joystickMove.position << std::endl;
+        }
+        if (event.type == sf::Event::JoystickConnected) {
+            std::cout << event.joystickConnect.joystickId;
+        }*/
+    }
+    if (Input::isKeyDown(Key::Debug)) {
+        Debug::switchDebugMode();
     }
 }
 
@@ -58,4 +72,16 @@ void Window::setCenter(sf::Vector2f position) {
 
 bool Window::getFocus() const {
     return this->window.hasFocus();
+}
+
+tgui::Gui &Window::gui() {
+    return this->tgui;
+}
+
+sf::Window &Window::get() {
+    return this->window;
+}
+
+void Window::draw(const sf::Vertex *vertices, std::size_t vertexCount, sf::PrimitiveType type) {
+    window.draw(vertices, vertexCount, type);
 }

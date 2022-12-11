@@ -24,7 +24,6 @@ public:
 
     template<typename T>
     std::shared_ptr<T> addComponent() {
-        static_assert(std::is_base_of<Component, T>::value, "must derive from Component");
 
         for (auto &existingComponent: components) {
             if (std::dynamic_pointer_cast<T>(existingComponent)) {

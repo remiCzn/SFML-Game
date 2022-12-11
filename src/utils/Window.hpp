@@ -2,10 +2,13 @@
 #define GAME_WINDOW_HPP
 
 #include "defines.hpp"
+#include "Debug.hpp"
+#include "Input.hpp"
+#include <cmath>
 
 class Window {
 public:
-    Window(const std::string &windowname);
+    explicit Window(const std::string &windowname);
 
     void update();
 
@@ -14,6 +17,8 @@ public:
     void draw(const sf::Drawable &drawable);
 
     void draw(const sf::Drawable &drawable, const sf::RenderStates &states);
+
+    void draw(const sf::Vertex *vertices, std::size_t vertexCount, sf::PrimitiveType type);
 
     void endDraw();
 
@@ -27,12 +32,16 @@ public:
 
     bool isOpen() const;
 
+    tgui::Gui &gui();
+
+    sf::Window &get();
+
     bool getFocus() const;
 
 private:
     sf::RenderWindow window;
+    tgui::Gui tgui;
     std::shared_ptr<sf::View> view;
-    bool focus;
 };
 
 

@@ -25,19 +25,16 @@ public:
 
     void onDeactivate() override;
 
-    void updateInput() override;
-
     void update(const float &dt) override;
 
     void lateUpdate(const float &dt) override;
 
-    void draw(Window &window) override;
+    void draw() override;
 
 private:
-    Window &window;
     std::shared_ptr<Object> player;
-
-    std::shared_ptr<Input> input;
+    SocketClient socket;
+    Input input;
     ResourceManager<sf::Texture> &textureAllocator;
     ObjectCollection objects;
 

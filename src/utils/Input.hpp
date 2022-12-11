@@ -4,31 +4,45 @@
 #include "defines.hpp"
 #include "Window.hpp"
 
+enum class Key {
+    None = 0,
+    Left = 1,
+    Right = 2,
+    Up = 3,
+    Down = 4,
+    Esc = 5,
+    Debug = 6
+};
+
+enum JoystickButton {
+    A = 0,
+    B,
+    X,
+    Y,
+    L,
+    R,
+    start,
+    select,
+    LAxis,
+    RAxis
+};
+
+class Window;
+
 class Input {
 public:
-    enum class Key {
-        None = 0,
-        Left = 1,
-        Right = 2,
-        Up = 3,
-        Down = 4,
-        Esc = 5
-    };
 
-    explicit Input(Window &window);
+    static void update(const Window &window);
 
-    void update();
+    static bool isKeyPressed(Key key);
 
-    bool isKeyPressed(Key key);
+    static bool isKeyDown(Key key);
 
-    bool isKeyDown(Key key);
-
-    bool isKeyUp(Key key);
+    static bool isKeyUp(Key key);
 
 private:
-    std::unordered_map<int, bool> thisFrameKeys;
-    std::unordered_map<int, bool> lastFrameKeys;
-    Window &window;
+    static std::unordered_set<Key> thisFrameKeys;
+    static std::unordered_set<Key> lastFrameKeys;
 };
 
 

@@ -10,7 +10,7 @@ namespace TilemapConsts {
 
 namespace GraphcisConsts {
     const float SCALE = 5;
-    const sf::Vector2i PLAYER_DIM = sf::Vector2i(19, 27);
+    const sf::Vector2i PLAYER_DIM = sf::Vector2i(16, 32);
 }
 
 namespace PhysicsConsts {

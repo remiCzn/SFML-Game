@@ -1,16 +1,25 @@
 #include "Game.hpp"
-#include "scene/SceneIntroScreen.hpp"
+#include "scene/Menu/SceneIntroScreen.hpp"
 #include "scene/SceneGame.hpp"
+#include "scene/Menu/MainMenuScene.hpp"
+#include "scene/Menu/SettingsMenuScene.hpp"
 
 Game::Game() : window("Game") {
-    std::shared_ptr<SceneIntroScreen> introScreen = std::make_shared<SceneIntroScreen>(sceneStateMachine, window,
-                                                                                       this->textureAllocator);
+    std::shared_ptr<SceneIntroScreen> introScreen = std::make_shared<SceneIntroScreen>(sceneStateMachine, window);
     std::shared_ptr<SceneGame> sceneGame = std::make_shared<SceneGame>(window, this->textureAllocator);
 
-    unsigned int introScrennId = sceneStateMachine.add(introScreen);
-    unsigned int gameScreenId = sceneStateMachine.add(sceneGame);
+    std::shared_ptr<MainMenuScene> sceneMenu = std::make_shared<MainMenuScene>(sceneStateMachine, window);
+    std::shared_ptr<SettingsMenuScene> settings = std::make_shared<SettingsMenuScene>(sceneStateMachine, window);
 
-    introScreen->setSwitchToScene(gameScreenId);
+    unsigned int introScrennId = sceneStateMachine.add(introScreen);
+    unsigned int menuScrenId = sceneStateMachine.add(sceneMenu);
+    unsigned int gameScreenId = sceneStateMachine.add(sceneGame);
+    unsigned int settingsScreenId = sceneStateMachine.add(settings);
+
+    sceneMenu->setGameState(gameScreenId);
+    introScreen->setSwitchToScene(menuScrenId);
+    sceneMenu->setSettingsState(settingsScreenId);
+    settings->setMainMenuState(menuScrenId);
     sceneStateMachine.switchTo(introScrennId);
 
     this->dt = clock.restart().asSeconds();
@@ -27,7 +36,7 @@ void Game::lateUpdate() {
 
 void Game::draw() {
     window.beginDraw();
-    sceneStateMachine.draw(window);
+    sceneStateMachine.draw();
     window.endDraw();
 }
 
@@ -40,5 +49,5 @@ void Game::updateDt() {
 }
 
 void Game::updateInput() {
-    sceneStateMachine.updateInput();
+    Input::update(window);
 }

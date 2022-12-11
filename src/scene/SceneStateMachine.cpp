@@ -4,12 +4,6 @@ SceneStateMachine::SceneStateMachine() : scenes(0), curScene(nullptr), insertedS
 
 }
 
-void SceneStateMachine::updateInput() {
-    if (curScene) {
-        curScene->updateInput();
-    }
-}
-
 void SceneStateMachine::update(const float &dt) {
     if (curScene) {
         curScene->update(dt);
@@ -22,9 +16,9 @@ void SceneStateMachine::lateUpdate(const float &dt) {
     }
 }
 
-void SceneStateMachine::draw(Window &window) {
+void SceneStateMachine::draw() {
     if (curScene) {
-        curScene->draw(window);
+        curScene->draw();
     }
 }
 

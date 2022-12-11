@@ -4,29 +4,21 @@ InputComponent::InputComponent(Object *owner) : Component(owner), moveSpeed(100)
 
 }
 
-void InputComponent::setInput(std::shared_ptr<Input> input) {
-    this->input = input;
-}
-
 void InputComponent::setMovementSpeed(int _moveSpeed) {
     this->moveSpeed = _moveSpeed;
 }
 
 void InputComponent::update(const float &dt) {
-    if (input == nullptr) {
-        return;
-    }
-
     sf::Vector2f move = sf::Vector2f(0, 0);
-    if (input->isKeyPressed(Input::Key::Left)) {
+    if (Input::isKeyPressed(Key::Left)) {
         move.x = -static_cast<float>(this->moveSpeed);
-    } else if (input->isKeyPressed(Input::Key::Right)) {
+    } else if (Input::isKeyPressed(Key::Right)) {
         move.x = static_cast<float>(this->moveSpeed);
     }
 
-    if (input->isKeyPressed(Input::Key::Up)) {
+    if (Input::isKeyPressed(Key::Up)) {
         move.y = -static_cast<float>(this->moveSpeed);
-    } else if (input->isKeyPressed(Input::Key::Down)) {
+    } else if (Input::isKeyPressed(Key::Down)) {
         move.y = static_cast<float>(this->moveSpeed);
     }
 

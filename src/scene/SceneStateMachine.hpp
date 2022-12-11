@@ -9,13 +9,11 @@ class SceneStateMachine {
 public:
     SceneStateMachine();
 
-    void updateInput();
-
     void update(const float &dt);
 
     void lateUpdate(const float &dt);
 
-    void draw(Window &window);
+    void draw();
 
     unsigned int add(std::shared_ptr<Scene> scene);
 
