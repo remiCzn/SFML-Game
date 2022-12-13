@@ -24,7 +24,8 @@ namespace ECS {
 
     class StateManager {
     public:
-        StateManager(std::shared_ptr<SharedContext> shared) {
+        explicit StateManager(std::shared_ptr<SharedContext> shared) :
+                shrdContext(std::move(shared)) {
 
         }
 
@@ -142,7 +143,6 @@ namespace ECS {
             for (auto itr = this->states.begin(); itr != this->states.end(); ++itr) {
                 if (itr->first == type) {
                     itr->second->onDestroy();
-                    delete itr->second;
                     this->states.erase(itr);
                     return;
                 }

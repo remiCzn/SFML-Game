@@ -2,34 +2,32 @@
 #define GAME_GAME_HPP
 
 
-#include "utils/Window.hpp"
-#include "constants.hpp"
-#include "utils/Input.hpp"
-#include "Scene/SceneStateMachine.hpp"
-#include "utils/ResourceManager.hpp"
+#include <SFML/System/Clock.hpp>
+#include "ecs/SharedContext.hpp"
+#include "ecs/state/StateManager.hpp"
 
 class Game {
 public:
     Game();
 
+    ~Game();
+
     void update();
+
+    void render();
 
     void lateUpdate();
 
-    void draw();
-
-    void updateDt();
-
-    bool isRunning() const;
+    float getDt();
 
 private:
-    Window window;
+    ECS::SharedContext context;
+    ECS::StateManager stateManager;
 
     sf::Clock clock;
-    float dt;
+    float dt{};
 
-    SceneStateMachine sceneStateMachine;
-    ResourceManager<sf::Texture> textureAllocator;
+    void restartClock();
 };
 
 
