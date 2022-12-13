@@ -3,7 +3,7 @@
 
 #include "../communication/Observer.hpp"
 #include "../objects/Object.hpp"
-#include "../ECS_Types.hpp"
+#include "ECS_Types.hpp"
 #include "SystemManager.hpp"
 
 class SystemManager;

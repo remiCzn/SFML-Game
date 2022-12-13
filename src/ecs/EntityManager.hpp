@@ -2,8 +2,16 @@
 #define GAME_ENTITYMANAGER_HPP
 
 
-class EntityManager {
+#include "SystemManager.hpp"
 
+class SystemManager;
+
+class EntityManager {
+    EntityManager(std::shared_ptr<SystemManager> systemManager);
+
+    ~EntityManager();
+
+private:
 };
 
 

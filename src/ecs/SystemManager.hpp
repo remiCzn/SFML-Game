@@ -3,10 +3,8 @@
 
 #include "defines.hpp"
 #include "EntityManager.hpp"
-#include "../ECS_Types.hpp"
+#include "ECS_Types.hpp"
 #include "System.hpp"
-
-class System;
 
 class SystemManager {
 public:
