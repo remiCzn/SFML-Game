@@ -38,7 +38,7 @@ void InputComponent::update(const float &dt) {
             }
         }
     }
-    this->owner->transform->translate(move * dt);
+    this->owner->getComponent<TransformComponent>()->translate(move * dt);
 }
 
 void InputComponent::awake() {

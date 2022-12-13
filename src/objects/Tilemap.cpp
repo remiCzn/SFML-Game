@@ -11,7 +11,7 @@ Tilemap::Tilemap() : Object() {
     this->getComponent<TilemapDrawableComponent>()->load("assets/tilesheet/main_sheet.tsj",
                                                          "assets/tilesheet/main_sheet.png");
     this->getComponent<TilemapColliderComponent>()->load();
-    this->transform->setStatic(true);
+    this->getComponent<TransformComponent>()->setStatic(true);
 }
 
 void Tilemap::draw(Window &window) {

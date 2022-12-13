@@ -1,8 +1,8 @@
 #include "Object.hpp"
 
 Object::Object() : queuedForRemoval(false) {
-    transform = this->addComponent<TransformComponent>();
-    instanceID = this->addComponent<InstanceIdComponent>();
+    this->addComponent<TransformComponent>();
+    this->addComponent<InstanceIdComponent>();
 }
 
 void Object::awake() {
@@ -30,7 +30,7 @@ void Object::lateUpdate(const float &dt) {
 }
 
 void Object::draw(Window &window) {
-    drawable->draw(window);
+    this->getComponent<DrawableComponent>()->draw(window);
 }
 
 bool Object::isQueuedForRemoval() const {
@@ -39,8 +39,4 @@ bool Object::isQueuedForRemoval() const {
 
 void Object::queueForRemoval() {
     queuedForRemoval = true;
-}
-
-std::shared_ptr<DrawableComponent> Object::getDrawable() {
-    return drawable;
 }

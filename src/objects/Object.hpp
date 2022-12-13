@@ -24,18 +24,13 @@ public:
 
     template<typename T>
     std::shared_ptr<T> addComponent() {
-
-        for (auto &existingComponent: components) {
-            if (std::dynamic_pointer_cast<T>(existingComponent)) {
-                return std::dynamic_pointer_cast<T>(existingComponent);
-            }
+        auto comp = getComponent<T>();
+        if (comp != nullptr) {
+            return comp;
         }
 
         std::shared_ptr<T> newComponent = std::make_shared<T>(this);
         components.push_back(newComponent);
-        if (std::dynamic_pointer_cast<DrawableComponent>(newComponent)) {
-            drawable = std::dynamic_pointer_cast<DrawableComponent>(newComponent);
-        }
         return newComponent;
     }
 
@@ -50,18 +45,12 @@ public:
         return nullptr;
     }
 
-    std::shared_ptr<DrawableComponent> getDrawable();
-
     bool isQueuedForRemoval() const;
 
     void queueForRemoval();
 
-    std::shared_ptr<TransformComponent> transform;
-    std::shared_ptr<InstanceIdComponent> instanceID;
-
 private:
-    std::vector<std::shared_ptr<Component>> components;
-    std::shared_ptr<DrawableComponent> drawable;
+    Container<Component> components;
     bool queuedForRemoval;
 };
 

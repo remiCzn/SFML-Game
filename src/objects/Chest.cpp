@@ -13,7 +13,7 @@ Chest::Chest(ResourceManager<sf::Texture> &textureAllocator) : Object() {
     collider->setSize(16, 20);
     collider->setOffset(0, 5);
 
-    this->transform->setStatic(true);
+    this->getComponent<TransformComponent>()->setStatic(true);
 }
 
 

@@ -27,14 +27,15 @@ void CollidableSystem::processRemovals() {
 void CollidableSystem::update() {
     for (auto &collidable: collidables) {
         Debug::drawRect(collidable->getCollidable(), sf::Color::Red);
-        if (collidable->owner->transform->isStatic()) {
+        if (collidable->owner->getComponent<TransformComponent>()->isStatic()) {
             continue;
         }
 
         Colliders collisions = Colliders();
 
         for (auto &collision: collidables) {
-            if (collidable->owner->instanceID->get() == collision->owner->instanceID->get()) {
+            if (collidable->owner->getComponent<InstanceIdComponent>()->get() ==
+                collision->owner->getComponent<InstanceIdComponent>()->get()) {
                 continue;
             }
 
@@ -42,8 +43,8 @@ void CollidableSystem::update() {
 
             if (m) {
                 //TODO: Check if the collision block in both axis or not
-                collidable->owner->transform->stopX();
-                collidable->owner->transform->stopY();
+                collidable->owner->getComponent<TransformComponent>()->stopX();
+                collidable->owner->getComponent<TransformComponent>()->stopY();
             }
         }
     }

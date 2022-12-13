@@ -19,9 +19,12 @@ void SceneGame::onCreate() {
     auto chest = std::make_shared<Chest>(textureAllocator);
     auto chest2 = std::make_shared<Chest>(textureAllocator);
     auto chest3 = std::make_shared<Chest>(textureAllocator);
-    chest2->transform->setPosition(-5 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
-    chest->transform->setPosition(-6 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
-    chest3->transform->setPosition(-4 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
+    chest2->getComponent<TransformComponent>()->setPosition(-5 * TilemapConsts::TILE_SIZE,
+                                                            -10 * TilemapConsts::TILE_SIZE);
+    chest->getComponent<TransformComponent>()->setPosition(-6 * TilemapConsts::TILE_SIZE,
+                                                           -10 * TilemapConsts::TILE_SIZE);
+    chest3->getComponent<TransformComponent>()->setPosition(-4 * TilemapConsts::TILE_SIZE,
+                                                            -10 * TilemapConsts::TILE_SIZE);
 
     objects.add(tilemap);
     objects.add(chest);
@@ -42,7 +45,7 @@ void SceneGame::update(const float &dt) {
 
 void SceneGame::draw() {
     objects.draw(window);
-    window.setCenter(player->transform->getPosition() +
+    window.setCenter(player->getComponent<TransformComponent>()->getPosition() +
                      sf::Vector2f(GraphcisConsts::PLAYER_DIM.x, GraphcisConsts::PLAYER_DIM.y) / 2.f);
     Debug::draw(window);
 }

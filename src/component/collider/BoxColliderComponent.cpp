@@ -40,7 +40,7 @@ const sf::FloatRect &BoxColliderComponent::getCollidable() {
 }
 
 void BoxColliderComponent::setPosition() {
-    const sf::Vector2f &pos = owner->transform->getNextFramePosition();
+    const sf::Vector2f &pos = owner->getComponent<TransformComponent>()->getNextFramePosition();
 
     AABB.left = pos.x + offset.x;
     AABB.top = pos.y + offset.y;

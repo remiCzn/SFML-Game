@@ -26,7 +26,7 @@ void DrawableSystem::draw(Window &window) {
 }
 
 void DrawableSystem::add(std::shared_ptr<Object> object) {
-    std::shared_ptr<DrawableComponent> draw = object->getDrawable();
+    std::shared_ptr<DrawableComponent> draw = object->getComponent<DrawableComponent>();
 
     if (draw) {
         drawables.emplace_back(object);
@@ -36,6 +36,7 @@ void DrawableSystem::add(std::shared_ptr<Object> object) {
 void DrawableSystem::sort() {
     std::sort(drawables.begin(), drawables.end(),
               [](const std::shared_ptr<Object> &a, const std::shared_ptr<Object> &b) -> bool {
-                  return a->getDrawable()->getSortOrder() < b->getDrawable()->getSortOrder();
+                  return a->getComponent<DrawableComponent>()->getSortOrder() <
+                         b->getComponent<DrawableComponent>()->getSortOrder();
               });
 }

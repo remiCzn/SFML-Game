@@ -21,5 +21,6 @@ Player::Player(ResourceManager<sf::Texture> &textureAllocator) : Object() {
     collider->setOffset(3, 8);
     collider->setSize(GraphcisConsts::PLAYER_DIM.x - 6, GraphcisConsts::PLAYER_DIM.y - 9);
 
-    this->transform->setPosition(-8 * TilemapConsts::TILE_SIZE, -10 * TilemapConsts::TILE_SIZE);
+    this->getComponent<TransformComponent>()->setPosition(-8 * TilemapConsts::TILE_SIZE,
+                                                          -10 * TilemapConsts::TILE_SIZE);
 }

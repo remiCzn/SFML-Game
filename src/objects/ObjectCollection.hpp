@@ -20,8 +20,8 @@ public:
     void processRemovals();
 
 private:
-    std::vector<std::shared_ptr<Object>> objects;
-    std::vector<std::shared_ptr<Object>> newObjects;
+    Container<Object> objects;
+    Container<Object> newObjects;
 
     DrawableSystem drawables;
     CollidableSystem collidables;

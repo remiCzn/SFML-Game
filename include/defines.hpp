@@ -16,3 +16,8 @@
 #include <TGUI/Core.hpp>
 #include <TGUI/Backends/SFML.hpp>
 #include <TGUI/Widgets/Button.hpp>
+
+template<typename T>
+using Container = std::vector<std::shared_ptr<T>>;
+template<typename E, class T>
+using MapContainer = std::unordered_map<E, std::shared_ptr<T>>;
